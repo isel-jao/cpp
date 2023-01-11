@@ -1,12 +1,13 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <string>
 #include <set>
 #include "map.hpp"
 #include "utils.hpp"
 #include "vector.hpp"
 
-// #define LIB ft
+#define LIB ft
 
 #ifndef LIB
 #define LIB std
@@ -14,14 +15,15 @@
 
 int main()
 {
+	LIB::map<int, int> m;
 
-	AVL<int> avl;
+	// m.insert(LIB::pair<int, int>(1, 1));
+	// m.insert(LIB::pair<int, int>(2, 2));
+	// m.insert(LIB::pair<int, int>(3, 3));
+	// m.insert(LIB::pair<int, int>(1337, 3));
 
-	LIB::pair<AVL<int>::iterator, bool> p = avl.insert(1);
-
-	print_container(avl);
-
-	// std::cout << std::boolalpha << (p1 == p2) << std::endl;
+	std::cout << m.empty() << std::endl;
+	// std::cout << it->first << std::endl;
 
 	return 0;
 }

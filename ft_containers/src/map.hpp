@@ -19,7 +19,7 @@ namespace ft
 		{
 			Compare _comp;
 			compare(Compare comp = Compare()) : _comp(comp) {}
-			bool operator()(const ft::pair<Key, T> &lhs, const ft::pair<Key, T> &rhs)
+			bool operator()(const ft::pair<Key, T> &lhs, const ft::pair<Key, T> &rhs) const
 			{
 				return (_comp(lhs.first, rhs.first));
 			}
@@ -61,10 +61,31 @@ namespace ft
 			return (_tree.insert(value));
 		}
 
+		iterator find(const Key &key)
+		{
+			return (_tree.find(ft::make_pair(key, mapped_type())));
+		}
+
+		const_iterator find(const Key &key) const
+		{
+			return (_tree.find(ft::make_pair(key, mapped_type())));
+		}
+
+		size_type count(const Key &key) const
+		{
+			if (this->find(key) == this->end())
+				return 0;
+			return 1;
+		}
+
+		void clear() { _tree.clear(); }
+
 		iterator begin() { return (_tree.begin()); }
-		iterator end() { return (_tree.end()); }
 
 		const_iterator begin() const { return (_tree.begin()); }
+
+		iterator end() { return (_tree.end()); }
+
 		const_iterator end() const { return (_tree.end()); }
 
 		mapped_type &operator[](const key_type &key)
@@ -79,6 +100,8 @@ namespace ft
 		}
 
 		size_type size() const { return _tree.size(); }
+
+		bool empty() const { return (_tree.size() == 1); }
 
 	private:
 		node_type _tree;

@@ -57,8 +57,8 @@ public:
 	typedef typename allocator_type::const_pointer const_pointer;			// const Node<T>*
 	typedef typename allocator_type::size_type size_type;
 
-	typedef ft::BST_iterator<value_type, node_type, key_compare> iterator;
-	typedef ft::BST_iterator<value_type, node_type, key_compare> const_iterator;
+	typedef ft::BST_iterator<value_type, node_type> iterator;
+	typedef ft::BST_iterator<value_type, node_type> const_iterator;
 
 private:
 	allocator_type _alloc;
@@ -88,32 +88,61 @@ public:
 
 	~AVL()
 	{
-		destroy(_root);
-		this->_root = NULL;
+		this->clear();
+	}
+
+	iterator find(const value_type &data)
+	{
+		pointer node = _root;
+		while (node)
+		{
+			if (_comp(data, node->_data))
+				node = node->_left;
+			else if (_comp(node->_data, data))
+				node = node->_right;
+			else
+				return iterator(node, minValue(_root), maxValue(_root));
+		}
+		return end();
+	}
+
+	const_iterator find(const value_type &data) const
+	{
+		pointer node = _root;
+		while (node)
+		{
+			if (_comp(data, node->_data))
+				node = node->_left;
+			else if (_comp(node->_data, data))
+				node = node->_right;
+			else
+				return const_iterator(node, minValue(_root), maxValue(_root));
+		}
+		return end();
 	}
 
 	iterator begin()
 	{
 		pointer min = minValue(_root);
-		return iterator(min, min, maxValue(_root), _comp);
+		return iterator(min, min, maxValue(_root));
 	}
 
 	iterator end()
 	{
 		pointer max = maxValue(_root);
-		return iterator(max, minValue(_root), maxValue(_root), _comp, 1);
+		return iterator(max, minValue(_root), maxValue(_root), 1);
 	}
 
 	const_iterator begin() const
 	{
 		pointer min = minValue(_root);
-		return const_iterator(min, min, maxValue(_root), _comp);
+		return const_iterator(min, min, maxValue(_root));
 	}
 
 	const_iterator end() const
 	{
 		pointer max = maxValue(_root);
-		return const_iterator(max, minValue(_root), max, _comp, 1);
+		return const_iterator(max, minValue(_root), max, 1);
 	}
 
 	void
@@ -131,13 +160,21 @@ public:
 	}
 	void erase(const value_type &data) { _root = erase(_root, data); }
 
+	void clear()
+	{
+		clear(_root);
+		this->_root = NULL;
+	}
+
+	size_type size() const { return this->_size; }
+
 private:
-	void destroy(pointer node)
+	void clear(pointer node)
 	{
 		if (node)
 		{
-			destroy(node->_left);
-			destroy(node->_right);
+			clear(node->_left);
+			clear(node->_right);
 			_alloc.destroy(node);
 			_alloc.deallocate(node, 1);
 		}
@@ -286,7 +323,7 @@ private:
 			_alloc.construct(root, data, parent);
 			_size++;
 			inserted = true;
-			it = iterator(root, minValue(root), maxValue(root), _comp);
+			it = iterator(root, minValue(root), maxValue(root));
 		}
 		else if (_comp(data, root->_data))
 			root->_left = insert(root->_left, data, root, inserted, it);
@@ -352,8 +389,6 @@ private:
 				root->_right = erase(root->_right, temp->_data);
 			}
 		}
-		if (root == NULL)
-			return NULL;
 		root->_height = calheight(root);
 		return balance(root);
 	}

@@ -204,7 +204,7 @@ namespace ft
 
 namespace ft
 {
-	template <typename D, typename T, class Compare>
+	template <typename D, typename T>
 	class BST_iterator : ft::iterator<ft::bidirectional_iterator_tag, T>
 	{
 	public:
@@ -215,11 +215,11 @@ namespace ft
 		typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::reference reference;
 		typedef D data_type;
 
-		BST_iterator(const Compare &comp = Compare()) : _ptr(), _last_node() {}
+		BST_iterator() : _ptr(), _last_node() {}
 
-		BST_iterator(T *p, T *first_node, T *last_node, const Compare &comp = Compare(), int offset = 0) : _ptr(p), _first_node(first_node), _last_node(last_node), _offset(offset) {}
+		BST_iterator(T *p, T *first_node, T *last_node, int offset = 0) : _ptr(p), _first_node(first_node), _last_node(last_node), _offset(offset) {}
 
-		BST_iterator(const BST_iterator &it) : _ptr(it._ptr), _last_node(it._last_node) {}
+		BST_iterator(const BST_iterator &it) : _ptr(it._ptr), _first_node(it._first_node), _last_node(it._last_node), _offset(it._offset) {}
 
 		virtual ~BST_iterator() {}
 
@@ -316,7 +316,7 @@ namespace ft
 
 namespace ft
 {
-	template <typename D, typename T, class Compare>
+	template <typename D, typename T>
 	class BST_const_iterator : ft::iterator<ft::bidirectional_iterator_tag, T>
 	{
 	public:
@@ -324,14 +324,16 @@ namespace ft
 		typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::iterator_category iterator_category;
 		typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::difference_type difference_type;
 		typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::pointer pointer;
+		typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::const_pointer const_pointer;
+
 		typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::reference reference;
 		typedef D data_type;
 
-		BST_const_iterator(const Compare &comp = Compare()) : _ptr(), _last_node() {}
+		BST_const_iterator() : _ptr(), _last_node() {}
 
-		BST_const_iterator(T *p, T *first_node, T *last_node, const Compare &comp = Compare(), int offset = 0) : _ptr(p), _first_node(first_node), _last_node(last_node), _offset(offset) {}
+		BST_const_iterator(T *p, T *first_node, T *last_node, int offset = 0) : _ptr(p), _first_node(first_node), _last_node(last_node), _offset(offset) {}
 
-		BST_const_iterator(const BST_const_iterator &it) : _ptr(it._ptr), _last_node(it._last_node) {}
+		BST_const_iterator(const BST_const_iterator &it) : _ptr(it._ptr), _first_node(it._first_node), _last_node(it._last_node), _offset(it._offset) {}
 
 		virtual ~BST_const_iterator() {}
 
@@ -348,26 +350,22 @@ namespace ft
 
 		bool operator==(const BST_const_iterator &it)
 		{
-
 			return (this->_ptr == it._ptr && this->_offset == it._offset);
 		}
 
-		bool operator!=(const BST_const_iterator &it) { return (this->_ptr != it._ptr || this->_offset != it._offset); }
+		bool operator!=(const BST_const_iterator &it)
+		{
+			return (this->_ptr != it._ptr || this->_offset != it._offset);
+		}
 
 		const data_type &operator*() const
 		{
-			if (this->_ptr)
-				return (this->_ptr->_data);
-			else
-				return (this->_last_node->_data);
+			return (this->_ptr->_data);
 		}
 
 		const data_type *operator->() const
 		{
-			if (this->_ptr)
-				return (&(this->_ptr->_data));
-			else
-				return (&(this->_last_node->_data));
+			return (&(this->_ptr->_data));
 		}
 
 		BST_const_iterator &operator++(void)
