@@ -59,6 +59,8 @@ public:
 
 	typedef ft::BST_iterator<value_type, node_type> iterator;
 	typedef ft::BST_iterator<value_type, node_type> const_iterator;
+	typedef ft::BST_reverse_iterator<value_type, node_type> reverse_iterator;
+	typedef ft::BST_reverse_iterator<value_type, node_type> const_reverse_iterator;
 
 private:
 	allocator_type _alloc;
@@ -121,6 +123,8 @@ public:
 		return end();
 	}
 
+	allocator_type get_allocator() const { return _alloc; }
+
 	iterator begin()
 	{
 		pointer min = minValue(_root);
@@ -145,6 +149,30 @@ public:
 		return const_iterator(max, minValue(_root), max, 1);
 	}
 
+	reverse_iterator rbegin()
+	{
+		pointer max = maxValue(_root);
+		return reverse_iterator(max, minValue(_root), maxValue(_root));
+	}
+
+	reverse_iterator rend()
+	{
+		pointer min = minValue(_root);
+		return reverse_iterator(min, minValue(_root), maxValue(_root), 1);
+	}
+
+	const_reverse_iterator rbegin() const
+	{
+		pointer max = maxValue(_root);
+		return const_reverse_iterator(max, minValue(_root), maxValue(_root));
+	}
+
+	const_reverse_iterator rend() const
+	{
+		pointer min = minValue(_root);
+		return const_reverse_iterator(min, minValue(_root), maxValue(_root), 1);
+	}
+
 	void
 	print()
 	{
@@ -158,18 +186,108 @@ public:
 
 		return ft::pair<iterator, bool>(it, inserted);
 	}
-	void erase(const value_type &data) { _root = erase(_root, data); }
+	size_type erase(const value_type &data)
+	{
+		size_type erased = 0;
+		_root = erase(_root, data, erased);
+		return erased;
+	}
 
 	void clear()
 	{
 		clear(_root);
 		this->_root = NULL;
+		this->_size = 0;
 	}
 
 	size_type size() const { return this->_size; }
+	iterator lower_bound(const value_type &data)
+	{
+		pointer node = _root;
+		pointer min = NULL;
+		while (node)
+		{
+			if (_comp(data, node->_data))
+			{
+				min = node;
+				node = node->_left;
+			}
+			else if (_comp(node->_data, data))
+				node = node->_right;
+			else
+				return iterator(node, minValue(_root), maxValue(_root));
+		}
+		return iterator(min, minValue(_root), maxValue(_root));
+	}
+
+	const_iterator lower_bound(const value_type &data) const
+	{
+		pointer node = _root;
+		pointer min = NULL;
+		while (node)
+		{
+			if (_comp(data, node->_data))
+			{
+				min = node;
+				node = node->_left;
+			}
+			else if (_comp(node->_data, data))
+				node = node->_right;
+			else
+				return const_iterator(node, minValue(_root), maxValue(_root));
+		}
+		return const_iterator(min, minValue(_root), maxValue(_root));
+	}
+
+	iterator upper_bound(const value_type &data)
+	{
+		pointer node = _root;
+		pointer max = NULL;
+		while (node)
+		{
+			if (_comp(data, node->_data))
+				node = node->_left;
+			else if (_comp(node->_data, data))
+			{
+				max = node;
+				node = node->_right;
+			}
+			else
+				return ++iterator(node, minValue(_root), maxValue(_root));
+		}
+		return ++iterator(max, minValue(_root), maxValue(_root));
+	}
+
+	const_iterator upper_bound(const value_type &data) const
+	{
+		pointer node = _root;
+		pointer max = NULL;
+		while (node)
+		{
+			if (_comp(data, node->_data))
+				node = node->_left;
+			else if (_comp(node->_data, data))
+			{
+				max = node;
+				node = node->_right;
+			}
+			else
+				return ++const_iterator(node, minValue(_root), maxValue(_root));
+		}
+		return ++const_iterator(max, minValue(_root), maxValue(_root));
+	}
+	size_type max_size() const { return _alloc.max_size(); }
+
+	void swap(AVL &x)
+	{
+		pointer tmp = x._root;
+		x._root = this->_root;
+		this->_root = tmp;
+	}
 
 private:
-	void clear(pointer node)
+	void
+	clear(pointer node)
 	{
 		if (node)
 		{
@@ -349,14 +467,14 @@ private:
 		return current;
 	}
 
-	pointer erase(pointer root, const value_type &data)
+	pointer erase(pointer root, const value_type &data, size_type &count)
 	{
 		if (root == NULL)
 			return root;
 		if (_comp(data, root->_data))
-			root->_left = erase(root->_left, data);
+			root->_left = erase(root->_left, data, count);
 		else if (_comp(root->_data, data))
-			root->_right = erase(root->_right, data);
+			root->_right = erase(root->_right, data, count);
 		else
 		{
 			if (root->_left == NULL && root->_right == NULL)
@@ -386,9 +504,12 @@ private:
 			{
 				pointer temp = minValue(root->_right);
 				root->_data = temp->_data;
-				root->_right = erase(root->_right, temp->_data);
+				root->_right = erase(root->_right, temp->_data, count);
 			}
+			count = 1;
 		}
+		if (root == NULL)
+			return root;
 		root->_height = calheight(root);
 		return balance(root);
 	}

@@ -15,15 +15,21 @@
 
 int main()
 {
-	LIB::map<int, int> m;
+	LIB::map<char, int> mymap;
 
-	// m.insert(LIB::pair<int, int>(1, 1));
-	// m.insert(LIB::pair<int, int>(2, 2));
-	// m.insert(LIB::pair<int, int>(3, 3));
-	// m.insert(LIB::pair<int, int>(1337, 3));
+	mymap['x'] = 1001;
+	mymap['y'] = 2002;
+	mymap['z'] = 3003;
 
-	std::cout << m.empty() << std::endl;
-	// std::cout << it->first << std::endl;
+	std::cout << "mymap contains:\n";
+
+	LIB::pair<char, int> highest = *mymap.rbegin(); // last element
+
+	LIB::map<char, int>::iterator it = mymap.begin();
+	do
+	{
+		std::cout << it->first << " => " << it->second << '\n';
+	} while (mymap.value_comp()(*it++, highest));
 
 	return 0;
 }

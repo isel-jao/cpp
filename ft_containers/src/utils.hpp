@@ -84,11 +84,24 @@ std::ostream &operator<<(std::ostream &os, const ft::pair<T1, T2> &p)
     os << "(" << p.first << "," << p.second << ")";
     return os;
 }
+template <typename T1, typename T2>
+std::ostream &operator<<(std::ostream &os, const std::pair<T1, T2> &p)
+{
+    os << "(" << p.first << "," << p.second << ")";
+    return os;
+}
 
 template <typename container>
 void print_container(const container &c)
 {
     for (typename container::const_iterator it = c.begin(); it != c.end(); ++it)
+        std::cout << *it << " ";
+    std::cout << std::endl;
+}
+template <typename container>
+void print_container_reverse(const container &c)
+{
+    for (typename container::const_reverse_iterator it = c.rbegin(); it != c.rend(); ++it)
         std::cout << *it << " ";
     std::cout << std::endl;
 }

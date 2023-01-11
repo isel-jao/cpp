@@ -1,5 +1,5 @@
 {
   "watch": ["src"],
   "ext": "cpp, hpp",
-  "exec": "(clear && echo -------- && make exec); echo -n"
+  "exec": "bash -c '(clear && echo -------- && make exec); echo -n'"
 }
