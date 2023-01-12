@@ -844,18 +844,21 @@ int main()
 			for (ft::vector<int>::iterator i = v.begin(); i < v.end(); i++)
 				std::cout << "\t" << *i;
 			std::cout << std::endl;
+
 			it = v.begin() + 2;
+			std::cout << "end - it: " << v.end() - it << std::endl;
+			std::cout << &(*it) << std::endl;
 			v.insert(it, 6, 10);
 			for (ft::vector<int>::iterator i = v.begin(); i < v.end(); i++)
 				std::cout << "\t" << *i;
 			std::cout << std::endl;
 
-			it = v.begin();
-			ft::vector<int> v1(2, 400);
-			v.insert(it + 2, v1.begin(), v1.end());
-			for (ft::vector<int>::iterator i = v.begin(); i < v.end(); i++)
-				std::cout << "\t" << *i;
-			std::cout << std::endl;
+			// it = v.begin();
+			// ft::vector<int> v1(2, 400);
+			// v.insert(it + 2, v1.begin(), v1.end());
+			// for (ft::vector<int>::iterator i = v.begin(); i < v.end(); i++)
+			// 	std::cout << "\t" << *i;
+			// std::cout << std::endl;
 
 			// int myarray[] = {501, 502, 503};
 			// v.insert(v.begin(), myarray, myarray + 3);

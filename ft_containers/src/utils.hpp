@@ -23,6 +23,13 @@ namespace ft
         pair(const pair &pr)
             : first(pr.first), second(pr.second) {}
 
+        template <class U1, class U2>
+        pair(const pair<U1, U2> &p)
+        {
+            this->first = p.first;
+            this->second = p.second;
+        }
+
         pair &operator=(const pair &pr)
         {
             if (this == &pr)
@@ -92,18 +99,13 @@ std::ostream &operator<<(std::ostream &os, const std::pair<T1, T2> &p)
 }
 
 template <typename container>
-void print_container(const container &c)
+void print_container(const container &c, const char *name = NULL, const char *sep = " ", const char *end = "\n")
 {
+    if (name)
+        std::cout << name << ": ";
     for (typename container::const_iterator it = c.begin(); it != c.end(); ++it)
-        std::cout << *it << " ";
-    std::cout << std::endl;
-}
-template <typename container>
-void print_container_reverse(const container &c)
-{
-    for (typename container::const_reverse_iterator it = c.rbegin(); it != c.rend(); ++it)
-        std::cout << *it << " ";
-    std::cout << std::endl;
+        std::cout << *it << sep;
+    std::cout << end << std::flush;
 }
 
 #endif

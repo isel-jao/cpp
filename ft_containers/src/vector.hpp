@@ -199,27 +199,37 @@ namespace ft
 
 		void insert(iterator position, size_type n, const value_type &val)
 		{
+			std::cout << "end - position " << this->end() - position << std::endl;
 			if (_size + n > _capacity)
 				reserve(_size + n);
 			if (position == end())
 			{
 				for (size_type i = 0; i < n; i++)
-					_alloc.construct(&(*position), val);
-				_size += n;
-			}
-			else
-			{
-				iterator it = end();
-				for (size_type i = 0; i < n; i++)
-					_alloc.construct(&(*it), *(it - 1));
-				for (size_type i = 0; i < n; i++)
 				{
-					_alloc.destroy(&(*position));
 					_alloc.construct(&(*position), val);
 					position++;
 				}
-				_size += n;
 			}
+			else
+			{
+				std::cout << &(*position) << std::endl;
+				std::cout << "end - begin " << &(*this->end()) - &*(this->begin()) << std::endl;
+				// while (it > position)
+				// {
+				// 	// _alloc.construct(&(*(it)), *(it - 1));
+				// 	std::cout << "it: " << *it << std::endl;
+				// 	it--;
+				// }
+
+				// for (size_type i = 0; i < n; i++)
+				// {
+				// 	_alloc.destroy(&(*position));
+				// 	_alloc.construct(&(*position), val);
+				// 	std::cout << "position" << *position << std::endl;
+				// 	position++;
+				// }
+			}
+			_size += n;
 		}
 
 		template <class InputIterator>
@@ -233,23 +243,25 @@ namespace ft
 			if (position == end())
 			{
 				for (InputIterator it = first; it != last; it++)
+				{
 					_alloc.construct(&(*position), *it);
+					position++;
+				}
 				_size += n;
 			}
 			else
 			{
-				std::cout << "waza" << std::endl;
 				iterator it = end();
-				// 	for (size_type i = 0; i < n; i++)
-				// 		_alloc.construct(&(*it), *(it - 1));
-				// 	for (size_type i = 0; i < n; i++)
-				// 	{
-				// 		_alloc.destroy(&(*position));
-				// 		_alloc.construct(&(*position), *first);
-				// 		position++;
-				// 		first++;
-				// 	}
-				// 	_size += n;
+				for (size_type i = 1; i <= n; i++)
+					_alloc.construct(&(*(it + n - i)), *(it - i));
+				for (size_type i = 0; i < n; i++)
+				{
+					_alloc.destroy(&(*position));
+					_alloc.construct(&(*position), *first);
+					position++;
+					first++;
+				}
+				_size += n;
 			}
 		}
 
