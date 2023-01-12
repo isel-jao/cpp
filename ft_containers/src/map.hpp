@@ -181,45 +181,45 @@ namespace ft
 		}
 
 	protected:
-		typedef AVL<ft::pair<Key, T>, value_compare> node_type;
-		node_type _tree;
+		typedef AVL<ft::pair<Key, T>, value_compare> bst_tree;
+		bst_tree _tree;
 		key_compare _comp;
 	};
-	template <class Key, class T, class Compare, class Alloc>
-	bool operator==(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
-	{
-		return (lhs._tree == rhs._tree);
-	}
+	// template <class Key, class T, class Compare, class Alloc>
+	// bool operator==(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
+	// {
+	// 	return (lhs._tree == rhs._tree);
+	// }
 
-	template <class Key, class T, class Compare, class Alloc>
-	bool operator!=(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
-	{
-		return (lhs._tree != rhs._tree);
-	}
+	// template <class Key, class T, class Compare, class Alloc>
+	// bool operator!=(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
+	// {
+	// 	return (lhs._tree != rhs._tree);
+	// }
 
-	template <class Key, class T, class Compare, class Alloc>
-	bool operator<(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
-	{
-		return (lhs._tree < rhs._tree);
-	}
+	// template <class Key, class T, class Compare, class Alloc>
+	// bool operator<(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
+	// {
+	// 	return (lhs._tree < rhs._tree);
+	// }
 
-	template <class Key, class T, class Compare, class Alloc>
-	bool operator<=(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
-	{
-		return (lhs._tree <= rhs._tree);
-	}
+	// template <class Key, class T, class Compare, class Alloc>
+	// bool operator<=(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
+	// {
+	// 	return (lhs._tree <= rhs._tree);
+	// }
 
-	template <class Key, class T, class Compare, class Alloc>
-	bool operator>(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
-	{
-		return (lhs._tree > rhs._tree);
-	}
-	template <class Key, class T, class Compare, class Alloc>
-	bool operator>=(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
+	// template <class Key, class T, class Compare, class Alloc>
+	// bool operator>(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
+	// {
+	// 	return (lhs._tree > rhs._tree);
+	// }
+	// template <class Key, class T, class Compare, class Alloc>
+	// bool operator>=(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
 
-	{
-		return (lhs._tree >= rhs._tree);
-	}
+	// {
+	// 	return (lhs._tree >= rhs._tree);
+	// }
 }
 
 #endif

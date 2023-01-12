@@ -1,10 +1,10 @@
 #include <iostream>
 #include <vector>
 #include <map>
-#include <string>
-#include <set>
-#include "map.hpp"
-#include "utils.hpp"
+// #include <string>
+// #include <set>
+// #include "map.hpp"
+// #include "utils.hpp"
 #include "vector.hpp"
 
 #define LIB ft
@@ -15,21 +15,22 @@
 
 int main()
 {
-	LIB::map<char, int> mymap;
+	std::vector<int> myvector;
 
-	mymap['x'] = 1001;
-	mymap['y'] = 2002;
-	mymap['z'] = 3003;
+	// set some initial content:
+	for (int i = 1; i < 10; i++)
+		myvector.push_back(i);
 
-	std::cout << "mymap contains:\n";
+	myvector.resize(5);
+	myvector.resize(8, 100);
+	myvector.resize(12);
 
-	LIB::pair<char, int> highest = *mymap.rbegin(); // last element
+	std::cout << "myvector contains:";
+	for (int i = 0; i < myvector.size(); i++)
+		std::cout << ' ' << myvector[i];
+	std::cout << '\n';
 
-	LIB::map<char, int>::iterator it = mymap.begin();
-	do
-	{
-		std::cout << it->first << " => " << it->second << '\n';
-	} while (mymap.value_comp()(*it++, highest));
+	return 0;
 
 	return 0;
 }

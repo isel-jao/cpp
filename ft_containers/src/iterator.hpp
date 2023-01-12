@@ -85,39 +85,56 @@ namespace ft
 
 		reference operator[](difference_type n) const { return (_ptr[n]); }
 
-		friend bool operator==(const vector_random_access_iterator<T> &lhs, const vector_random_access_iterator<T> &rhs)
-		{
-			return (lhs._ptr == rhs._ptr);
-		}
-
-		friend bool operator!=(const vector_random_access_iterator<T> &lhs, const vector_random_access_iterator<T> &rhs)
-		{
-			return (lhs._ptr != rhs._ptr);
-		}
-
-		friend bool operator<(const vector_random_access_iterator<T> &lhs, const vector_random_access_iterator<T> &rhs)
-		{
-			return (lhs._ptr < rhs._ptr);
-		}
-
-		friend bool operator<=(const vector_random_access_iterator<T> &lhs, const vector_random_access_iterator<T> &rhs)
-		{
-			return (lhs._ptr <= rhs._ptr);
-		}
-
-		friend bool operator>(const vector_random_access_iterator<T> &lhs, const vector_random_access_iterator<T> &rhs)
-		{
-			return (lhs._ptr > rhs._ptr);
-		}
-
-		friend bool operator>=(const vector_random_access_iterator<T> &lhs, const vector_random_access_iterator<T> &rhs)
-		{
-			return (lhs._ptr >= rhs._ptr);
-		}
-
 	private:
 		pointer _ptr;
 	};
+
+	template <class Iterator>
+	bool operator==(const vector_random_access_iterator<Iterator> &lhs, const vector_random_access_iterator<Iterator> &rhs)
+	{
+		return (lhs.base() == rhs.base());
+	}
+
+	template <class Iterator>
+	bool operator!=(const vector_random_access_iterator<Iterator> &lhs, const vector_random_access_iterator<Iterator> &rhs)
+	{
+		return (lhs.base() != rhs.base());
+	}
+
+	template <class Iterator>
+	vector_random_access_iterator<Iterator> operator+(typename vector_random_access_iterator<Iterator>::difference_type n, const vector_random_access_iterator<Iterator> &it)
+	{
+		return (it + n);
+	}
+
+	template <class Iterator>
+	typename vector_random_access_iterator<Iterator>::difference_type operator-(const vector_random_access_iterator<Iterator> &lhs, const vector_random_access_iterator<Iterator> &rhs)
+	{
+		return (lhs.base() - rhs.base());
+	}
+
+	template <class Iterator>
+	bool operator<(const vector_random_access_iterator<Iterator> &lhs, const vector_random_access_iterator<Iterator> &rhs)
+	{
+		return (lhs.base() < rhs.base());
+	}
+	template <class Iterator>
+	bool operator>(const vector_random_access_iterator<Iterator> &lhs, const vector_random_access_iterator<Iterator> &rhs)
+	{
+		return (lhs.base() > rhs.base());
+	}
+
+	template <class Iterator>
+	bool operator<=(const vector_random_access_iterator<Iterator> &lhs, const vector_random_access_iterator<Iterator> &rhs)
+	{
+		return (lhs.base() <= rhs.base());
+	}
+
+	template <class Iterator>
+	bool operator>=(const vector_random_access_iterator<Iterator> &lhs, const vector_random_access_iterator<Iterator> &rhs)
+	{
+		return (lhs.base() >= rhs.base());
+	}
 
 }
 
@@ -196,6 +213,18 @@ namespace ft
 		pointer operator->() const { return &(operator*()); }
 
 		reference operator[](difference_type n) const { return (this->base()[-n - 1]); }
+
+		friend bool operator==(const reverse_iterator<Iterator> &lhs, const reverse_iterator<Iterator> &rhs) { return (lhs._ptr == rhs._ptr); }
+
+		friend bool operator!=(const reverse_iterator<Iterator> &lhs, const reverse_iterator<Iterator> &rhs) { return (lhs._ptr != rhs._ptr); }
+
+		friend bool operator<(const reverse_iterator<Iterator> &lhs, const reverse_iterator<Iterator> &rhs) { return (lhs._ptr > rhs._ptr); }
+
+		friend bool operator<=(const reverse_iterator<Iterator> &lhs, const reverse_iterator<Iterator> &rhs) { return (lhs._ptr >= rhs._ptr); }
+
+		friend bool operator>(const reverse_iterator<Iterator> &lhs, const reverse_iterator<Iterator> &rhs) { return (lhs._ptr < rhs._ptr); }
+
+		friend bool operator>=(const reverse_iterator<Iterator> &lhs, const reverse_iterator<Iterator> &rhs) { return (lhs._ptr <= rhs._ptr); }
 
 	private:
 		iterator_type _ptr;
@@ -551,3 +580,8 @@ namespace ft
 }
 
 #endif
+// void ft::vector<T, Allocator>::insert(ft::vector<T, Allocator>::iterator, InputIterator, InputIterator)
+// InputIterator = int;
+// T = int;
+// Allocator = std::allocator<int>
+//  ft::vector<T, Allocator>::iterator = ft::vector_random_access_iterator<int>
