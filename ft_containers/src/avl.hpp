@@ -43,7 +43,7 @@ void print2D(Node<T> *root, int space)
 	print2D(root->_left, space);
 }
 
-template <typename T, typename Compare = std::less<T>, typename Alloc = std::allocator<Node<T>>>
+template <typename T, typename Compare = std::less<T>, typename Alloc = std::allocator<Node<T> > >
 class AVL
 {
 public:

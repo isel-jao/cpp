@@ -6,7 +6,7 @@
 /*   By: isel-jao <isel-jao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:59:25 by isel-jao          #+#    #+#             */
-/*   Updated: 2023/01/13 13:59:25 by isel-jao         ###   ########.fr       */
+/*   Updated: 2023/01/13 16:51:45 by isel-jao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -294,7 +294,7 @@ namespace ft
 
 		BST_iterator &operator++(void)
 		{
-			if (_ptr == nullptr)
+			if (_ptr == NULL)
 				return (*this);
 			if (_ptr->_right != NULL)
 			{
@@ -320,7 +320,7 @@ namespace ft
 
 		BST_iterator &operator--(void)
 		{
-			if (_ptr == nullptr)
+			if (_ptr == NULL)
 				return (*this);
 			if (_ptr->_left != NULL)
 			{
@@ -438,7 +438,7 @@ namespace ft
 
 		BST_reverse_iterator &operator--(void)
 		{
-			if (_ptr == nullptr)
+			if (_ptr == NULL)
 				return (*this);
 			if (_ptr->_right != NULL)
 			{

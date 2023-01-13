@@ -6,7 +6,7 @@
 /*   By: isel-jao <isel-jao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:58:43 by isel-jao          #+#    #+#             */
-/*   Updated: 2023/01/13 13:58:46 by isel-jao         ###   ########.fr       */
+/*   Updated: 2023/01/13 18:23:59 by isel-jao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include "type_traits.hpp"
 namespace ft
 {
-	template <class T, class Allocator = std::allocator<T>>
+	template <class T, class Allocator = std::allocator<T> >
 	class vector
 	{
 	public:
@@ -42,7 +42,7 @@ namespace ft
 
 		explicit vector(size_type n, const value_type &val = value_type(),
 										const allocator_type &alloc = allocator_type())
-				: _alloc(alloc), _size(0), _capacity(0), _data(NULL) { assign(n, val); }
+				: _alloc(alloc), _data(NULL), _size(0), _capacity(0) { assign(n, val); }
 
 		template <class InputIt>
 		vector(InputIt first, InputIt last,
@@ -440,6 +440,7 @@ namespace ft
 	{
 		x.swap(y);
 	}
+
 }
 
 #endif

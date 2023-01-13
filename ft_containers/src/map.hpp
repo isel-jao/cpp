@@ -11,7 +11,7 @@ namespace ft
 			class Key,
 			class T,
 			class Compare = std::less<Key>,
-			class Allocator = std::allocator<ft::pair<Key, T>>>
+			class Allocator = std::allocator<ft::pair<Key, T> > >
 	class map
 	{
 
@@ -43,9 +43,14 @@ namespace ft
 		typedef typename AVL<ft::pair<key_type, mapped_type>, value_compare>::reverse_iterator reverse_iterator;
 		typedef typename AVL<ft::pair<key_type, mapped_type>, value_compare>::const_reverse_iterator const_reverse_iterator;
 
-		explicit map() : _tree() {}
+		explicit map() : _tree()
+		{
+			std::cout << "waza" << std::endl;
+		}
 
-		explicit map(const Compare &comp, const Allocator &alloc = Allocator()) : _tree(value_compare(comp), alloc), _comp(comp) {}
+		explicit map(const Compare &comp, const Allocator &alloc = Allocator()) : _tree(value_compare(comp), alloc), _comp(comp)
+		{
+		}
 
 		template <class InputIterator>
 		map(InputIterator first, InputIterator last, const key_compare &comp = key_compare(), const allocator_type &alloc = allocator_type()) : _tree(value_compare(comp), alloc), _comp(comp)

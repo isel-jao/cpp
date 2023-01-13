@@ -6,7 +6,7 @@
 /*   By: isel-jao <isel-jao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:59:34 by isel-jao          #+#    #+#             */
-/*   Updated: 2023/01/13 14:09:21 by isel-jao         ###   ########.fr       */
+/*   Updated: 2023/01/13 16:52:38 by isel-jao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 namespace ft
 {
-	template <class T, class Container = std::vector<T>>
+	template <class T, class Container = std::vector<T> >
 	class stack
 	{
 	public:
