@@ -47,18 +47,30 @@ namespace ft
 
 		explicit map(const Compare &comp, const Allocator &alloc = Allocator()) : _tree(value_compare(comp), alloc), _comp(comp) {}
 
-		template <class InputIt>
-
-		map(const map &other)
+		template <class InputIterator>
+		map(InputIterator first, InputIterator last, const key_compare &comp = key_compare(), const allocator_type &alloc = allocator_type()) : _tree(value_compare(comp), alloc), _comp(comp)
 		{
-			*this = other;
+			while (first != last)
+			{
+				_tree.insert(*first);
+				first++;
+			}
 		}
 
-		~map()
-		{
-			_tree.clear();
-		}
+		map(const map &other) { *this = other; }
+
+		~map() {}
 		/////////////////////////// operators overload ///////////////////////////
+		map &operator=(const map &other)
+		{
+			if (this != &other)
+			{
+				_tree.clear();
+				_tree = other._tree;
+			}
+			return (*this);
+		}
+
 		mapped_type &operator[](const key_type &key)
 		{
 			iterator it = _tree.find(key);
@@ -79,7 +91,7 @@ namespace ft
 
 		size_type count(const Key &key) const { return (this->find(key) == this->end() ? 0 : 1); }
 
-		bool empty() const { return (_tree.size() == 1); }
+		bool empty() const { return (_tree.size() == 0); }
 
 		iterator end() { return (_tree.end()); }
 
@@ -101,11 +113,11 @@ namespace ft
 
 		void erase(iterator first, iterator last)
 		{
-			while (first != last)
+			iterator tmp = first;
+			while (tmp != last)
 			{
-				iterator tmp = first;
-				++first;
 				_tree.erase(*tmp);
+				tmp++;
 			}
 		}
 		iterator find(const key_type &key)

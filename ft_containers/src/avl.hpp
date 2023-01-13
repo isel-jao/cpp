@@ -73,7 +73,7 @@ public:
 			: _alloc(alloc), _root(), _comp(comp), _size(0)
 	{
 	}
-	AVL(const AVL &x)
+	AVL(const AVL &x) : _alloc(x._alloc), _root(), _comp(x._comp), _size(x._size)
 	{
 		*this = x;
 	}
@@ -82,8 +82,11 @@ public:
 	{
 		if (this != &x)
 		{
-			destroy(_root);
-			_root = clone(x._root);
+			this->clear();
+			_comp = x._comp;
+			_alloc = x._alloc;
+			_size = x._size;
+			_root = this->clone(x._root);
 		}
 		return *this;
 	}
@@ -103,7 +106,7 @@ public:
 			else if (_comp(node->_data, data))
 				node = node->_right;
 			else
-				return iterator(node, minValue(_root), maxValue(_root));
+				return iterator(node);
 		}
 		return end();
 	}
@@ -118,7 +121,7 @@ public:
 			else if (_comp(node->_data, data))
 				node = node->_right;
 			else
-				return const_iterator(node, minValue(_root), maxValue(_root));
+				return const_iterator(node);
 		}
 		return end();
 	}
@@ -128,49 +131,45 @@ public:
 	iterator begin()
 	{
 		pointer min = minValue(_root);
-		return iterator(min, min, maxValue(_root));
+		return iterator(min);
 	}
 
 	iterator end()
 	{
-		pointer max = maxValue(_root);
-		return iterator(max, minValue(_root), maxValue(_root), 1);
+		return iterator(NULL);
 	}
 
 	const_iterator begin() const
 	{
 		pointer min = minValue(_root);
-		return const_iterator(min, min, maxValue(_root));
+		return const_iterator(min);
 	}
 
 	const_iterator end() const
 	{
-		pointer max = maxValue(_root);
-		return const_iterator(max, minValue(_root), max, 1);
+		return const_iterator(NULL);
 	}
 
 	reverse_iterator rbegin()
 	{
 		pointer max = maxValue(_root);
-		return reverse_iterator(max, minValue(_root), maxValue(_root));
+		return reverse_iterator(max);
 	}
 
 	reverse_iterator rend()
 	{
-		pointer min = minValue(_root);
-		return reverse_iterator(min, minValue(_root), maxValue(_root), 1);
+		return reverse_iterator(NULL);
 	}
 
 	const_reverse_iterator rbegin() const
 	{
 		pointer max = maxValue(_root);
-		return const_reverse_iterator(max, minValue(_root), maxValue(_root));
+		return const_reverse_iterator(max);
 	}
 
 	const_reverse_iterator rend() const
 	{
-		pointer min = minValue(_root);
-		return const_reverse_iterator(min, minValue(_root), maxValue(_root), 1);
+		return const_reverse_iterator(NULL);
 	}
 
 	void
@@ -215,9 +214,9 @@ public:
 			else if (_comp(node->_data, data))
 				node = node->_right;
 			else
-				return iterator(node, minValue(_root), maxValue(_root));
+				return iterator(node);
 		}
-		return iterator(min, minValue(_root), maxValue(_root));
+		return iterator(min);
 	}
 
 	const_iterator lower_bound(const value_type &data) const
@@ -234,9 +233,9 @@ public:
 			else if (_comp(node->_data, data))
 				node = node->_right;
 			else
-				return const_iterator(node, minValue(_root), maxValue(_root));
+				return const_iterator(node);
 		}
-		return const_iterator(min, minValue(_root), maxValue(_root));
+		return const_iterator(min);
 	}
 
 	iterator upper_bound(const value_type &data)
@@ -253,9 +252,9 @@ public:
 				node = node->_right;
 			}
 			else
-				return ++iterator(node, minValue(_root), maxValue(_root));
+				return ++iterator(node);
 		}
-		return ++iterator(max, minValue(_root), maxValue(_root));
+		return ++iterator(max);
 	}
 
 	const_iterator upper_bound(const value_type &data) const
@@ -272,9 +271,9 @@ public:
 				node = node->_right;
 			}
 			else
-				return ++const_iterator(node, minValue(_root), maxValue(_root));
+				return ++const_iterator(node);
 		}
-		return ++const_iterator(max, minValue(_root), maxValue(_root));
+		return ++const_iterator(max);
 	}
 	size_type max_size() const { return _alloc.max_size(); }
 
@@ -283,6 +282,10 @@ public:
 		pointer tmp = x._root;
 		x._root = this->_root;
 		this->_root = tmp;
+
+		size_type tmp2 = x._size;
+		x._size = this->_size;
+		this->_size = tmp2;
 	}
 
 private:
@@ -298,14 +301,14 @@ private:
 		}
 	}
 
-	pointer clone(pointer node)
+	pointer clone(pointer node, pointer p = NULL)
 	{
 		if (node)
 		{
 			pointer n = _alloc.allocate(1);
-			_alloc.construct(n, node->_data);
-			n->_left = clone(node->_left);
-			n->_right = clone(node->_right);
+			_alloc.construct(n, node->_data, p);
+			n->_left = clone(node->_left, n);
+			n->_right = clone(node->_right, n);
 			n->_height = node->_height;
 			return n;
 		}
@@ -441,12 +444,17 @@ private:
 			_alloc.construct(root, data, parent);
 			_size++;
 			inserted = true;
-			it = iterator(root, minValue(root), maxValue(root));
+			it = iterator(root);
 		}
 		else if (_comp(data, root->_data))
 			root->_left = insert(root->_left, data, root, inserted, it);
 		else if (_comp(root->_data, data))
 			root->_right = insert(root->_right, data, root, inserted, it);
+		else
+		{
+			it = iterator(root);
+			return root;
+		}
 		root->_height = calheight(root);
 		root = balance(root);
 		return root;
@@ -491,6 +499,7 @@ private:
 				root->_parent = temp->_parent;
 				_alloc.destroy(temp);
 				_alloc.deallocate(temp, 1);
+				_size--;
 			}
 			else if (root->_right == NULL)
 			{
@@ -499,6 +508,7 @@ private:
 				root->_parent = temp->_parent;
 				_alloc.destroy(temp);
 				_alloc.deallocate(temp, 1);
+				_size--;
 			}
 			else
 			{

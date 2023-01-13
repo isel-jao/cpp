@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   iterator.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: isel-jao <isel-jao@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/13 13:59:25 by isel-jao          #+#    #+#             */
+/*   Updated: 2023/01/13 13:59:25 by isel-jao         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef ITERATOR_HPP
 #define ITERATOR_HPP
 
@@ -244,11 +256,11 @@ namespace ft
 		typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::reference reference;
 		typedef D data_type;
 
-		BST_iterator() : _ptr(), _last_node() {}
+		BST_iterator() : _ptr() {}
 
-		BST_iterator(T *p, T *first_node, T *last_node, int offset = 0) : _ptr(p), _first_node(first_node), _last_node(last_node), _offset(offset) {}
+		BST_iterator(T *p) : _ptr(p) {}
 
-		BST_iterator(const BST_iterator &it) : _ptr(it._ptr), _first_node(it._first_node), _last_node(it._last_node), _offset(it._offset) {}
+		BST_iterator(const BST_iterator &it) : _ptr(it._ptr) {}
 
 		virtual ~BST_iterator() {}
 
@@ -257,28 +269,21 @@ namespace ft
 			if (*this == it)
 				return (*this);
 			this->_ptr = it._ptr;
-			this->_last_node = it._last_node;
-			this->_first_node = it._first_node;
-			this->_offset = it._offset;
 			return (*this);
 		}
 
 		bool operator==(const BST_iterator &it)
 		{
-			return (this->_ptr == it._ptr && this->_offset == it._offset);
+			return (this->_ptr == it._ptr);
 		}
 
 		bool operator!=(const BST_iterator &it)
 		{
-			return (this->_ptr != it._ptr || this->_offset != it._offset);
+			return (this->_ptr != it._ptr);
 		}
 
 		data_type &operator*() const
 		{
-			if (this->_offset != 0 || this->_ptr == NULL)
-			{
-				return (this->_last_node->_data);
-			}
 			return (this->_ptr->_data);
 		}
 
@@ -289,19 +294,19 @@ namespace ft
 
 		BST_iterator &operator++(void)
 		{
-			if (this->_offset < 0 || this->_offset > 1 || this->_ptr == this->_last_node)
-				this->_offset++;
-			else if (this->_ptr->_right)
+			if (_ptr == nullptr)
+				return (*this);
+			if (_ptr->_right != NULL)
 			{
-				this->_ptr = this->_ptr->_right;
-				while (this->_ptr->_left)
-					this->_ptr = this->_ptr->_left;
+				_ptr = _ptr->_right;
+				while (_ptr->_left != NULL)
+					_ptr = _ptr->_left;
 			}
 			else
 			{
-				while (this->_ptr->_parent && this->_ptr->_parent->_right == this->_ptr)
-					this->_ptr = this->_ptr->_parent;
-				this->_ptr = this->_ptr->_parent;
+				while (_ptr->_parent != NULL && _ptr == _ptr->_parent->_right)
+					_ptr = _ptr->_parent;
+				_ptr = _ptr->_parent;
 			}
 			return (*this);
 		}
@@ -315,19 +320,19 @@ namespace ft
 
 		BST_iterator &operator--(void)
 		{
-			if (this->_offset > 0 || this->_offset < -1 || this->_ptr == this->_first_node)
-				this->_offset--;
-			else if (this->_ptr->_left)
+			if (_ptr == nullptr)
+				return (*this);
+			if (_ptr->_left != NULL)
 			{
-				this->_ptr = this->_ptr->_left;
-				while (this->_ptr->_right)
-					this->_ptr = this->_ptr->_right;
+				_ptr = _ptr->_left;
+				while (_ptr->_right != NULL)
+					_ptr = _ptr->_right;
 			}
 			else
 			{
-				while (this->_ptr->_parent && this->_ptr->_parent->_left == this->_ptr)
-					this->_ptr = this->_ptr->_parent;
-				this->_ptr = this->_ptr->_parent;
+				while (_ptr->_parent != NULL && _ptr == _ptr->_parent->_left)
+					_ptr = _ptr->_parent;
+				_ptr = _ptr->_parent;
 			}
 			return (*this);
 		}
@@ -341,10 +346,19 @@ namespace ft
 
 	private:
 		pointer _ptr;
-		pointer _last_node;
-		pointer _first_node;
-		int _offset;
 	};
+
+	template <typename D, typename T>
+	bool operator==(const BST_iterator<D, T> &lhs, const BST_iterator<D, T> &rhs)
+	{
+		return (lhs._ptr == rhs._ptr);
+	}
+
+	template <typename D, typename T>
+	bool operator!=(const BST_iterator<D, T> &lhs, const BST_iterator<D, T> &rhs)
+	{
+		return (lhs._ptr != rhs._ptr);
+	}
 }
 
 namespace ft
@@ -360,11 +374,11 @@ namespace ft
 		typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::reference reference;
 		typedef D data_type;
 
-		BST_reverse_iterator() : _ptr(), _last_node() {}
+		BST_reverse_iterator() : _ptr() {}
 
-		BST_reverse_iterator(T *p, T *first_node, T *last_node, int offset = 0) : _ptr(p), _first_node(first_node), _last_node(last_node), _offset(offset) {}
+		BST_reverse_iterator(T *p) : _ptr(p) {}
 
-		BST_reverse_iterator(const BST_reverse_iterator &it) : _ptr(it._ptr), _first_node(it._first_node), _last_node(it._last_node), _offset(it._offset) {}
+		BST_reverse_iterator(const BST_reverse_iterator &it) : _ptr(it._ptr) {}
 
 		virtual ~BST_reverse_iterator() {}
 
@@ -373,28 +387,21 @@ namespace ft
 			if (*this == it)
 				return (*this);
 			this->_ptr = it._ptr;
-			this->_last_node = it._last_node;
-			this->_first_node = it._first_node;
-			this->_offset = it._offset;
 			return (*this);
 		}
 
 		bool operator==(const BST_reverse_iterator &it)
 		{
-			return (this->_ptr == it._ptr && this->_offset == it._offset);
+			return (this->_ptr == it._ptr);
 		}
 
 		bool operator!=(const BST_reverse_iterator &it)
 		{
-			return (this->_ptr != it._ptr || this->_offset != it._offset);
+			return (this->_ptr != it._ptr);
 		}
 
 		data_type &operator*() const
 		{
-			if (this->_offset != 0 || this->_ptr == NULL)
-			{
-				return (this->_first_node->_data);
-			}
 			return (this->_ptr->_data);
 		}
 
@@ -405,19 +412,19 @@ namespace ft
 
 		BST_reverse_iterator &operator++(void)
 		{
-			if (this->_offset < 0 || this->_offset > 1 || this->_ptr == this->_first_node)
-				this->_offset++;
-			else if (this->_ptr->_left)
+			if (_ptr == NULL)
+				return (*this);
+			if (_ptr->_left != NULL)
 			{
-				this->_ptr = this->_ptr->_left;
-				while (this->_ptr->_right)
-					this->_ptr = this->_ptr->_right;
+				_ptr = _ptr->_left;
+				while (_ptr->_right != NULL)
+					_ptr = _ptr->_right;
 			}
 			else
 			{
-				while (this->_ptr->_parent && this->_ptr->_parent->_left == this->_ptr)
-					this->_ptr = this->_ptr->_parent;
-				this->_ptr = this->_ptr->_parent;
+				while (_ptr->_parent != NULL && _ptr == _ptr->_parent->_left)
+					_ptr = _ptr->_parent;
+				_ptr = _ptr->_parent;
 			}
 			return (*this);
 		}
@@ -431,19 +438,19 @@ namespace ft
 
 		BST_reverse_iterator &operator--(void)
 		{
-			if (this->_offset > 0 || this->_offset < -1 || this->_ptr == this->_last_node)
-				this->_offset--;
-			else if (this->_ptr->_right)
+			if (_ptr == nullptr)
+				return (*this);
+			if (_ptr->_right != NULL)
 			{
-				this->_ptr = this->_ptr->_right;
-				while (this->_ptr->_left)
-					this->_ptr = this->_ptr->_left;
+				_ptr = _ptr->_right;
+				while (_ptr->_left != NULL)
+					_ptr = _ptr->_left;
 			}
 			else
 			{
-				while (this->_ptr->_parent && this->_ptr->_parent->_right == this->_ptr)
-					this->_ptr = this->_ptr->_parent;
-				this->_ptr = this->_ptr->_parent;
+				while (_ptr->_parent != NULL && _ptr == _ptr->_parent->_right)
+					_ptr = _ptr->_parent;
+				_ptr = _ptr->_parent;
 			}
 			return (*this);
 		}
@@ -457,10 +464,19 @@ namespace ft
 
 	private:
 		pointer _ptr;
-		pointer _last_node;
-		pointer _first_node;
-		int _offset;
 	};
+
+	template <typename D, typename T>
+	bool operator==(const BST_reverse_iterator<D, T> &lhs, const BST_reverse_iterator<D, T> &rhs)
+	{
+		return (lhs._ptr == rhs._ptr);
+	}
+
+	template <typename D, typename T>
+	bool operator!=(const BST_reverse_iterator<D, T> &lhs, const BST_reverse_iterator<D, T> &rhs)
+	{
+		return (lhs._ptr != rhs._ptr);
+	}
 }
 
 namespace ft
@@ -476,11 +492,11 @@ namespace ft
 		typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::reference reference;
 		typedef D data_type;
 
-		BST_const_reverse_iterator() : _ptr(), _last_node() {}
+		BST_const_reverse_iterator() : _ptr() {}
 
-		BST_const_reverse_iterator(T *p, T *first_node, T *last_node, int offset = 0) : _ptr(p), _first_node(first_node), _last_node(last_node), _offset(offset) {}
+		BST_const_reverse_iterator(T *p) : _ptr(p) {}
 
-		BST_const_reverse_iterator(const BST_const_reverse_iterator &it) : _ptr(it._ptr), _first_node(it._first_node), _last_node(it._last_node), _offset(it._offset) {}
+		BST_const_reverse_iterator(const BST_const_reverse_iterator &it) : _ptr(it._ptr) {}
 
 		virtual ~BST_const_reverse_iterator() {}
 
@@ -489,20 +505,17 @@ namespace ft
 			if (*this == it)
 				return (*this);
 			this->_ptr = it._ptr;
-			this->_last_node = it._last_node;
-			this->_first_node = it._first_node;
-			this->_offset = it._offset;
 			return (*this);
 		}
 
 		bool operator==(const BST_const_reverse_iterator &it)
 		{
-			return (this->_ptr == it._ptr && this->_offset == it._offset);
+			return (this->_ptr == it._ptr);
 		}
 
 		bool operator!=(const BST_const_reverse_iterator &it)
 		{
-			return (this->_ptr != it._ptr || this->_offset != it._offset);
+			return (this->_ptr != it._ptr);
 		}
 
 		const data_type &operator*() const
@@ -521,20 +534,6 @@ namespace ft
 
 		BST_const_reverse_iterator &operator++(void)
 		{
-			if (this->_offset < 0 || this->_offset > 1 || this->_ptr == this->_first_node)
-				this->_offset++;
-			else if (this->_ptr->_left)
-			{
-				this->_ptr = this->_ptr->_left;
-				while (this->_ptr->_right)
-					this->_ptr = this->_ptr->_right;
-			}
-			else
-			{
-				while (this->_ptr->_parent && this->_ptr->_parent->_left == this->_ptr)
-					this->_ptr = this->_ptr->_parent;
-				this->_ptr = this->_ptr->_parent;
-			}
 			return (*this);
 		}
 
@@ -547,20 +546,6 @@ namespace ft
 
 		BST_const_reverse_iterator &operator--(void)
 		{
-			if (this->_offset > 0 || this->_offset < -1 || this->_ptr == this->_last_node)
-				this->_offset--;
-			else if (this->_ptr->_right)
-			{
-				this->_ptr = this->_ptr->_right;
-				while (this->_ptr->_left)
-					this->_ptr = this->_ptr->_left;
-			}
-			else
-			{
-				while (this->_ptr->_parent && this->_ptr->_parent->_right == this->_ptr)
-					this->_ptr = this->_ptr->_parent;
-				this->_ptr = this->_ptr->_parent;
-			}
 			return (*this);
 		}
 
@@ -573,9 +558,6 @@ namespace ft
 
 	private:
 		pointer _ptr;
-		pointer _last_node;
-		pointer _first_node;
-		int _offset;
 	};
 }
 

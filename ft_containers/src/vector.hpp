@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vector.hpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: isel-jao <isel-jao@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/13 13:58:43 by isel-jao          #+#    #+#             */
+/*   Updated: 2023/01/13 13:58:46 by isel-jao         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef VECTOR_HPP
 #define VECTOR_HPP
 
@@ -55,6 +67,9 @@ namespace ft
 		~vector()
 		{
 			this->clear();
+			_alloc.deallocate(_data, _capacity);
+			_capacity = 0;
+			_data = NULL;
 		}
 
 		//////////////////////////// mumber overloads ////////////////////////////
@@ -139,10 +154,8 @@ namespace ft
 				return;
 			for (size_type i = 0; i < _size; i++)
 				_alloc.destroy(&_data[i]);
-			_alloc.deallocate(_data, _capacity);
+
 			_size = 0;
-			_capacity = 0;
-			_data = NULL;
 		}
 		bool empty() const { return _size == 0; }
 
@@ -171,7 +184,45 @@ namespace ft
 			return iterator(pos);
 		}
 
-		reference front() { return _data[0]; }
+		size_type erase(const value_type &k)
+		{
+			size_type i = 0;
+			for (; i < _size; i++)
+			{
+				if (_data[i] == k)
+					break;
+			}
+			if (i == _size)
+				return 0;
+			erase(iterator(_data + i));
+			return 1;
+		}
+		void erase(iterator first, iterator last)
+		{
+			difference_type n = last - first;
+			if (first == last)
+				return;
+			iterator it = first;
+			while (it != last)
+			{
+				_alloc.destroy(&(*it));
+				it++;
+			}
+			iterator it2 = last;
+			while (it2 != end())
+			{
+				_alloc.construct(&(*first), *it2);
+				_alloc.destroy(&(*it2));
+				first++;
+				it2++;
+			}
+			_size -= n;
+		}
+
+		reference front()
+		{
+			return _data[0];
+		}
 
 		const_reference front() const { return _data[0]; }
 
@@ -199,37 +250,22 @@ namespace ft
 
 		void insert(iterator position, size_type n, const value_type &val)
 		{
-			std::cout << "end - position " << this->end() - position << std::endl;
-			if (_size + n > _capacity)
-				reserve(_size + n);
-			if (position == end())
+			difference_type diff = position - begin();
+			if (diff < 0)
+				throw std::out_of_range("vector");
+			this->reserve(this->_size + n);
+			this->_size += n;
+			difference_type i = size();
+			while (--i >= 0)
 			{
-				for (size_type i = 0; i < n; i++)
+				if (i == diff)
 				{
-					_alloc.construct(&(*position), val);
-					position++;
+					for (size_type j = 0; j < n; j++)
+						this->_alloc.construct(&this->_data[i + j], val);
+					break;
 				}
+				this->_alloc.construct(&this->_data[i], this->_data[i - n]);
 			}
-			else
-			{
-				std::cout << &(*position) << std::endl;
-				std::cout << "end - begin " << &(*this->end()) - &*(this->begin()) << std::endl;
-				// while (it > position)
-				// {
-				// 	// _alloc.construct(&(*(it)), *(it - 1));
-				// 	std::cout << "it: " << *it << std::endl;
-				// 	it--;
-				// }
-
-				// for (size_type i = 0; i < n; i++)
-				// {
-				// 	_alloc.destroy(&(*position));
-				// 	_alloc.construct(&(*position), val);
-				// 	std::cout << "position" << *position << std::endl;
-				// 	position++;
-				// }
-			}
-			_size += n;
 		}
 
 		template <class InputIterator>
@@ -238,30 +274,21 @@ namespace ft
 			size_type n = 0;
 			for (InputIterator it = first; it != last; it++)
 				n++;
-			if (_size + n > _capacity)
-				reserve(_size + n);
-			if (position == end())
+			difference_type diff = position - begin();
+			if (diff < 0)
+				throw std::out_of_range("vector");
+			this->reserve(this->_size + n);
+			this->_size += n;
+			difference_type i = size();
+			while (--i >= 0)
 			{
-				for (InputIterator it = first; it != last; it++)
+				if (i == diff)
 				{
-					_alloc.construct(&(*position), *it);
-					position++;
+					for (size_type j = 0; j < n; j++)
+						this->_alloc.construct(&this->_data[i + j], *(first + j));
+					break;
 				}
-				_size += n;
-			}
-			else
-			{
-				iterator it = end();
-				for (size_type i = 1; i <= n; i++)
-					_alloc.construct(&(*(it + n - i)), *(it - i));
-				for (size_type i = 0; i < n; i++)
-				{
-					_alloc.destroy(&(*position));
-					_alloc.construct(&(*position), *first);
-					position++;
-					first++;
-				}
-				_size += n;
+				this->_alloc.construct(&this->_data[i], this->_data[i - n]);
 			}
 		}
 

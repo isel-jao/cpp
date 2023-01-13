@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: isel-jao <isel-jao@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/13 13:58:53 by isel-jao          #+#    #+#             */
+/*   Updated: 2023/01/13 13:58:55 by isel-jao         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef UTILS_HPP
 #define UTILS_HPP
 
@@ -24,11 +36,7 @@ namespace ft
             : first(pr.first), second(pr.second) {}
 
         template <class U1, class U2>
-        pair(const pair<U1, U2> &p)
-        {
-            this->first = p.first;
-            this->second = p.second;
-        }
+        pair(const pair<U1, U2> &p) : first(p.first), second(p.second) {}
 
         pair &operator=(const pair &pr)
         {

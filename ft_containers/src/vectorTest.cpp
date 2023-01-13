@@ -23,42 +23,42 @@ int main()
 
 	// 		std::cout << "*********** v1 < normal > ************" << std::endl;
 	// 		for (std::vector<int>::iterator it = v1.begin(); it != v1.end(); it++)
-	// 			std::cout << "\t" << *it;
+	// 			std::cout << "   " << *it;
 	// 		std::cout << std::endl;
 
 	// 		std::cout << "*********** v1 < reverse > ************" << std::endl;
 	// 		for (std::vector<int>::reverse_iterator it = v1.rbegin(); it != v1.rend(); it++)
-	// 			std::cout << "\t" << *it;
+	// 			std::cout << "   " << *it;
 	// 		std::cout << std::endl;
 
 	// 		std::cout << "*********** v2 < normal > ************" << std::endl;
 	// 		for (std::vector<int>::iterator it = v2.begin(); it != v2.end(); it++)
-	// 			std::cout << "\t" << *it;
+	// 			std::cout << "   " << *it;
 	// 		std::cout << std::endl;
 
 	// 		std::cout << "*********** v2 < reverse > ************" << std::endl;
 	// 		for (std::vector<int>::reverse_iterator it = v2.rbegin(); it != v2.rend(); it++)
-	// 			std::cout << "\t" << *it;
+	// 			std::cout << "   " << *it;
 	// 		std::cout << std::endl;
 
 	// 		std::cout << "*********** v3 < normal > ************" << std::endl;
 	// 		for (std::vector<int>::iterator it = v3.begin(); it != v3.end(); it++)
-	// 			std::cout << "\t" << *it;
+	// 			std::cout << "   " << *it;
 	// 		std::cout << std::endl;
 
 	// 		std::cout << "*********** v3 < reverse > ************" << std::endl;
 	// 		for (std::vector<int>::reverse_iterator it = v3.rbegin(); it != v3.rend(); it++)
-	// 			std::cout << "\t" << *it;
+	// 			std::cout << "   " << *it;
 	// 		std::cout << std::endl;
 
 	// 		std::cout << "*********** v4 < normal > ************" << std::endl;
 	// 		for (std::vector<int>::iterator it = v4.begin(); it != v4.end(); it++)
-	// 			std::cout << "\t" << *it;
+	// 			std::cout << "   " << *it;
 	// 		std::cout << std::endl;
 
 	// 		std::cout << "*********** v4 < reverse > ************" << std::endl;
 	// 		for (std::vector<int>::reverse_iterator it = v4.rbegin(); it != v4.rend(); it++)
-	// 			std::cout << "\t" << *it;
+	// 			std::cout << "   " << *it;
 	// 		std::cout << std::endl;
 	// 	}
 	// 	catch (const std::exception &e)
@@ -77,42 +77,42 @@ int main()
 
 	// 		std::cout << "*********** v1 < normal > ************" << std::endl;
 	// 		for (ft::vector<int>::iterator it = v1.begin(); it != v1.end(); it++)
-	// 			std::cout << "\t" << *it;
+	// 			std::cout << "   " << *it;
 	// 		std::cout << std::endl;
 
 	// 		std::cout << "*********** v1 < reverse > ************" << std::endl;
 	// 		for (ft::vector<int>::reverse_iterator it = v1.rbegin(); it != v1.rend(); it++)
-	// 			std::cout << "\t" << *it;
+	// 			std::cout << "   " << *it;
 	// 		std::cout << std::endl;
 
 	// 		std::cout << "*********** v2 < normal > ************" << std::endl;
 	// 		for (ft::vector<int>::iterator it = v2.begin(); it != v2.end(); it++)
-	// 			std::cout << "\t" << *it;
+	// 			std::cout << "   " << *it;
 	// 		std::cout << std::endl;
 
 	// 		std::cout << "*********** v2 < reverse > ************" << std::endl;
 	// 		for (ft::vector<int>::reverse_iterator it = v2.rbegin(); it != v2.rend(); it++)
-	// 			std::cout << "\t" << *it;
+	// 			std::cout << "   " << *it;
 	// 		std::cout << std::endl;
 
 	// 		std::cout << "*********** v3 < normal > ************" << std::endl;
 	// 		for (ft::vector<int>::iterator it = v3.begin(); it != v3.end(); it++)
-	// 			std::cout << "\t" << *it;
+	// 			std::cout << "   " << *it;
 	// 		std::cout << std::endl;
 
 	// 		std::cout << "*********** v3 < reverse > ************" << std::endl;
 	// 		for (ft::vector<int>::reverse_iterator it = v3.rbegin(); it != v3.rend(); it++)
-	// 			std::cout << "\t" << *it;
+	// 			std::cout << "   " << *it;
 	// 		std::cout << std::endl;
 
 	// 		std::cout << "*********** v4 < normal > ************" << std::endl;
 	// 		for (ft::vector<int>::iterator it = v4.begin(); it != v4.end(); it++)
-	// 			std::cout << "\t" << *it;
+	// 			std::cout << "   " << *it;
 	// 		std::cout << std::endl;
 
 	// 		std::cout << "*********** v4 < reverse > ************" << std::endl;
 	// 		for (ft::vector<int>::reverse_iterator it = v4.rbegin(); it != v4.rend(); it++)
-	// 			std::cout << "\t" << *it;
+	// 			std::cout << "   " << *it;
 	// 		std::cout << std::endl;
 	// 	}
 	// 	catch (const std::exception &e)
@@ -136,7 +136,7 @@ int main()
 	// 		std::cout << v.max_size() << std::endl;
 
 	// 		for (std::vector<int>::iterator it = v.begin(); it != v.end(); it++)
-	// 			std::cout << "\t" << *it;
+	// 			std::cout << "   " << *it;
 	// 		std::cout << std::endl;
 
 	// 		// * resize
@@ -144,14 +144,14 @@ int main()
 	// 		std::cout << "capacity = " << v.capacity() << std::endl;
 	// 		v.resize(5);
 	// 		for (std::vector<int>::iterator it = v.begin(); it != v.end(); it++)
-	// 			std::cout << "\t" << *it;
+	// 			std::cout << "   " << *it;
 	// 		std::cout << std::endl;
 	// 		std::cout << "size = " << v.size() << std::endl;
 	// 		std::cout << "capacity = " << v.capacity() << std::endl;
 
 	// 		v.resize(11);
 	// 		for (std::vector<int>::iterator it = v.begin(); it != v.end(); it++)
-	// 			std::cout << "\t" << *it;
+	// 			std::cout << "   " << *it;
 	// 		std::cout << std::endl;
 	// 		std::cout << "size = " << v.size() << std::endl;
 	// 		std::cout << "capacity = " << v.capacity() << std::endl;
@@ -170,7 +170,7 @@ int main()
 	// 		std::cout << v.max_size() << std::endl;
 
 	// 		for (ft::vector<int>::iterator it = v.begin(); it != v.end(); it++)
-	// 			std::cout << "\t" << *it;
+	// 			std::cout << "   " << *it;
 	// 		std::cout << std::endl;
 
 	// 		// * resize
@@ -178,14 +178,14 @@ int main()
 	// 		std::cout << "capacity = " << v.capacity() << std::endl;
 	// 		v.resize(5);
 	// 		for (ft::vector<int>::iterator it = v.begin(); it != v.end(); it++)
-	// 			std::cout << "\t" << *it;
+	// 			std::cout << "   " << *it;
 	// 		std::cout << std::endl;
 	// 		std::cout << "size = " << v.size() << std::endl;
 	// 		std::cout << "capacity = " << v.capacity() << std::endl;
 
 	// 		v.resize(11);
 	// 		for (ft::vector<int>::iterator it = v.begin(); it != v.end(); it++)
-	// 			std::cout << "\t" << *it;
+	// 			std::cout << "   " << *it;
 	// 		std::cout << std::endl;
 	// 		std::cout << "size = " << v.size() << std::endl;
 	// 		std::cout << "capacity = " << v.capacity() << std::endl;
@@ -332,7 +332,7 @@ int main()
 	// 		}
 	// 		for (std::vector<int>::iterator i = v.begin(); i < v.end(); i++)
 	// 		{
-	// 			std::cout << "\t" << *i << std::endl;
+	// 			std::cout << "   " << *i << std::endl;
 	// 		}
 	// 		std::cout << "after pushing the vector" << (v.empty() ? " is empty " : " isn't empty ") << std::endl;
 	// 	}
@@ -358,7 +358,7 @@ int main()
 	// 		}
 	// 		for (ft::vector<int>::iterator i = v.begin(); i < v.end(); i++)
 	// 		{
-	// 			std::cout << "\t" << *i << std::endl;
+	// 			std::cout << "   " << *i << std::endl;
 	// 		}
 
 	// 		std::cout << "after pushing the vector" << (v.empty() ? " is empty " : " isn't empty ") << std::endl;
@@ -389,7 +389,7 @@ int main()
 	// 		}
 	// 		for (std::vector<int>::iterator i = v.begin(); i < v.end(); i++)
 	// 		{
-	// 			std::cout << "\t" << *i << std::endl;
+	// 			std::cout << "   " << *i << std::endl;
 	// 		}
 	// 		std::cout << "capacity = " << v.capacity() << std::endl;
 
@@ -400,7 +400,7 @@ int main()
 	// 		std::cout << "capacity = " << v.capacity() << std::endl;
 	// 		for (std::vector<int>::iterator i = v.begin(); i < v.end(); i++)
 	// 		{
-	// 			std::cout << "\t" << *i << std::endl;
+	// 			std::cout << "   " << *i << std::endl;
 	// 		}
 
 	// 		v.reserve(value * 4);
@@ -424,7 +424,7 @@ int main()
 	// 		}
 	// 		for (ft::vector<int>::iterator i = v.begin(); i < v.end(); i++)
 	// 		{
-	// 			std::cout << "\t" << *i << std::endl;
+	// 			std::cout << "   " << *i << std::endl;
 	// 		}
 	// 		std::cout << "capacity = " << v.capacity() << std::endl;
 
@@ -435,7 +435,7 @@ int main()
 	// 		std::cout << "capacity = " << v.capacity() << std::endl;
 	// 		for (ft::vector<int>::iterator i = v.begin(); i < v.end(); i++)
 	// 		{
-	// 			std::cout << "\t" << *i << std::endl;
+	// 			std::cout << "   " << *i << std::endl;
 	// 		}
 	// 		v.reserve(value * 4);
 	// 		std::cout << "capacity = " << v.capacity() << std::endl;
@@ -590,14 +590,14 @@ int main()
 
 	// 		v.push_back(5);
 	// 		for (std::vector<int>::iterator i = v.begin(); i < v.end(); i++)
-	// 			std::cout << "\t" << *i;
+	// 			std::cout << "   " << *i;
 	// 		std::cout << std::endl;
 	// 		std::cout << "size = " << v.size() << std::endl;
 	// 		std::cout << "capacity = " << v.capacity() << std::endl;
 
 	// 		v.assign(15, 10);
 	// 		for (std::vector<int>::iterator i = v.begin(); i < v.end(); i++)
-	// 			std::cout << "\t" << *i;
+	// 			std::cout << "   " << *i;
 	// 		std::cout << std::endl;
 	// 		std::cout << "size = " << v.size() << std::endl;
 	// 		std::cout << "size = " << v[8] << std::endl;
@@ -608,7 +608,7 @@ int main()
 	// 		v2.push_back(5);
 	// 		v2.assign(v.begin() + 1, v.end() - 1);
 	// 		for (std::vector<int>::iterator i = v2.begin(); i < v2.end(); i++)
-	// 			std::cout << "\t" << *i;
+	// 			std::cout << "   " << *i;
 	// 		std::cout << std::endl;
 	// 		std::cout << "size 2 = " << v2.size() << std::endl;
 	// 		std::cout << "capacity 2 = " << v2.capacity() << std::endl;
@@ -628,14 +628,14 @@ int main()
 
 	// 		v.push_back(5);
 	// 		for (ft::vector<int>::iterator i = v.begin(); i < v.end(); i++)
-	// 			std::cout << "\t" << *i;
+	// 			std::cout << "   " << *i;
 	// 		std::cout << std::endl;
 	// 		std::cout << "size = " << v.size() << std::endl;
 	// 		std::cout << "capacity = " << v.capacity() << std::endl;
 
 	// 		v.assign(15, 10);
 	// 		for (ft::vector<int>::iterator i = v.begin(); i < v.end(); i++)
-	// 			std::cout << "\t" << *i;
+	// 			std::cout << "   " << *i;
 	// 		std::cout << std::endl;
 	// 		std::cout << "size = " << v.size() << std::endl;
 	// 		std::cout << "size = " << v[8] << std::endl;
@@ -646,7 +646,7 @@ int main()
 	// 		v2.push_back(5);
 	// 		v2.assign(v.begin() + 1, v.end() - 1);
 	// 		for (ft::vector<int>::iterator i = v2.begin(); i < v2.end(); i++)
-	// 			std::cout << "\t" << *i;
+	// 			std::cout << "   " << *i;
 	// 		std::cout << std::endl;
 	// 		std::cout << "size 2 = " << v2.size() << std::endl;
 	// 		std::cout << "capacity 2 = " << v2.capacity() << std::endl;
@@ -674,7 +674,7 @@ int main()
 	// 			v.push_back(i);
 
 	// 		for (std::vector<int>::iterator i = v.begin(); i != v.end(); i++)
-	// 			std::cout << "\t" << *i << std::endl;
+	// 			std::cout << "   " << *i << std::endl;
 
 	// 		v.resize(0);
 	// 		std::cout << "size = " << v.size() << std::endl;
@@ -682,7 +682,7 @@ int main()
 
 	// 		v.resize(10);
 	// 		for (std::vector<int>::iterator i = v.begin(); i != v.end(); i++)
-	// 			std::cout << "\t" << *i << std::endl;
+	// 			std::cout << "   " << *i << std::endl;
 	// 		std::cout << "size = " << v.size() << std::endl;
 	// 		std::cout << "capacity = " << v.capacity() << std::endl;
 	// 	}
@@ -701,7 +701,7 @@ int main()
 	// 			v.push_back(i);
 
 	// 		for (ft::vector<int>::iterator i = v.begin(); i != v.end(); i++)
-	// 			std::cout << "\t" << *i << std::endl;
+	// 			std::cout << "   " << *i << std::endl;
 
 	// 		v.resize(0);
 	// 		std::cout << "size = " << v.size() << std::endl;
@@ -709,7 +709,7 @@ int main()
 
 	// 		v.resize(10);
 	// 		for (ft::vector<int>::iterator i = v.begin(); i != v.end(); i++)
-	// 			std::cout << "\t" << *i << std::endl;
+	// 			std::cout << "   " << *i << std::endl;
 	// 		std::cout << "size = " << v.size() << std::endl;
 	// 		std::cout << "capacity = " << v.capacity() << std::endl;
 	// 	}
@@ -737,13 +737,13 @@ int main()
 	// 			v.push_back(i);
 	// 		}
 	// 		for (std::vector<int>::iterator i = v.begin(); i < v.end(); i++)
-	// 			std::cout << "\t" << *i;
+	// 			std::cout << "   " << *i;
 	// 		std::cout << std::endl;
 	// 		std::cout << "capacity = " << v.capacity() << std::endl;
 
 	// 		v.pop_back();
 	// 		for (std::vector<int>::iterator i = v.begin(); i < v.end(); i++)
-	// 			std::cout << "\t" << *i;
+	// 			std::cout << "   " << *i;
 	// 		std::cout << std::endl;
 	// 		std::cout << "capacity = " << v.capacity() << std::endl;
 	// 		std::cout << "capacity = " << *(v.end()) << std::endl;
@@ -764,13 +764,13 @@ int main()
 	// 			v.push_back(i);
 	// 		}
 	// 		for (ft::vector<int>::iterator i = v.begin(); i < v.end(); i++)
-	// 			std::cout << "\t" << *i;
+	// 			std::cout << "   " << *i;
 	// 		std::cout << std::endl;
 	// 		std::cout << "capacity = " << v.capacity() << std::endl;
 
 	// 		v.pop_back();
 	// 		for (ft::vector<int>::iterator i = v.begin(); i < v.end(); i++)
-	// 			std::cout << "\t" << *i;
+	// 			std::cout << "   " << *i;
 	// 		std::cout << std::endl;
 	// 		std::cout << "capacity = " << v.capacity() << std::endl;
 	// 		std::cout << "capacity = " << *(v.end()) << std::endl;
@@ -781,96 +781,94 @@ int main()
 	// 	}
 	// }
 
-	std::cout << std::endl
-						<< "\033[36m"
-						<< "************************************ test 12 < insert > ************************************ "
-						<< "\033[0m" << std::endl;
-	{
-		std::cout << "\033[32m"
-							<< "----------------------- ORIGINAL -----------------------"
-							<< "\033[0m" << std::endl;
-		try
-		{
-			std::vector<int> v(3, 100);
-			std::vector<int>::iterator it;
+	// std::cout << std::endl
+	// 					<< "\033[36m"
+	// 					<< "************************************ test 12 < insert > ************************************ "
+	// 					<< "\033[0m" << std::endl;
+	// {
+	// 	std::cout << "\033[32m"
+	// 						<< "----------------------- ORIGINAL -----------------------"
+	// 						<< "\033[0m" << std::endl;
+	// 	try
+	// 	{
+	// 		std::vector<int> v(3, 100);
+	// 		std::vector<int>::iterator it;
 
-			for (std::vector<int>::iterator i = v.begin(); i < v.end(); i++)
-				std::cout << "\t" << *i;
-			std::cout << std::endl;
+	// 		for (std::vector<int>::iterator i = v.begin(); i < v.end(); i++)
+	// 			std::cout << "   " << *i;
+	// 		std::cout << std::endl;
 
-			it = v.begin();
-			it = v.insert(it, 200);
-			for (std::vector<int>::iterator i = v.begin(); i < v.end(); i++)
-				std::cout << "\t" << *i;
-			std::cout << std::endl;
+	// 		it = v.begin();
+	// 		it = v.insert(it, 200);
+	// 		for (std::vector<int>::iterator i = v.begin(); i < v.end(); i++)
+	// 			std::cout << "   " << *i;
+	// 		std::cout << std::endl;
 
-			it = v.begin() + 2;
-			v.insert(it, 6, 10);
-			for (std::vector<int>::iterator i = v.begin(); i < v.end(); i++)
-				std::cout << "\t" << *i;
-			std::cout << std::endl;
+	// 		it = v.begin() + 2;
+	// 		v.insert(it, 6, 10);
+	// 		for (std::vector<int>::iterator i = v.begin(); i < v.end(); i++)
+	// 			std::cout << "   " << *i;
+	// 		std::cout << std::endl;
 
-			it = v.begin();
-			std::vector<int> v1(2, 400);
-			v.insert(it + 2, v1.begin(), v1.end());
-			for (std::vector<int>::iterator i = v.begin(); i < v.end(); i++)
-				std::cout << "\t" << *i;
-			std::cout << std::endl;
+	// 		it = v.begin();
+	// 		std::vector<int> v1(2, 400);
+	// 		v.insert(it + 2, v1.begin(), v1.end());
+	// 		for (std::vector<int>::iterator i = v.begin(); i < v.end(); i++)
+	// 			std::cout << "   " << *i;
+	// 		std::cout << std::endl;
 
-			int myarray[] = {501, 502, 503};
-			v.insert(v.begin(), myarray, myarray + 3);
-			for (std::vector<int>::iterator i = v.begin(); i < v.end(); i++)
-				std::cout << "\t" << *i;
-			std::cout << std::endl;
-		}
-		catch (const std::exception &e)
-		{
-			std::cerr << e.what() << '\n';
-		}
-		std::cout << "\033[33m"
-							<< "----------------------- RECREATED -----------------------"
-							<< "\033[0m" << std::endl;
-		try
-		{
-			ft::vector<int> v(3, 100);
-			ft::vector<int>::iterator it;
+	// 		int myarray[] = {501, 502, 503};
+	// 		v.insert(v.begin(), myarray, myarray + 3);
+	// 		for (std::vector<int>::iterator i = v.begin(); i < v.end(); i++)
+	// 			std::cout << "   " << *i;
+	// 		std::cout << std::endl;
+	// 	}
+	// 	catch (const std::exception &e)
+	// 	{
+	// 		std::cerr << e.what() << '\n';
+	// 	}
+	// 	std::cout << "\033[33m"
+	// 						<< "----------------------- RECREATED -----------------------"
+	// 						<< "\033[0m" << std::endl;
+	// 	try
+	// 	{
+	// 		ft::vector<int> v(3, 100);
+	// 		ft::vector<int>::iterator it;
 
-			for (ft::vector<int>::iterator i = v.begin(); i < v.end(); i++)
-				std::cout << "\t" << *i;
-			std::cout << std::endl;
+	// 		for (ft::vector<int>::iterator i = v.begin(); i < v.end(); i++)
+	// 			std::cout << "   " << *i;
+	// 		std::cout << std::endl;
 
-			it = v.begin();
-			it = v.insert(it, 200);
-			for (ft::vector<int>::iterator i = v.begin(); i < v.end(); i++)
-				std::cout << "\t" << *i;
-			std::cout << std::endl;
+	// 		it = v.begin();
+	// 		it = v.insert(it, 200);
+	// 		for (ft::vector<int>::iterator i = v.begin(); i < v.end(); i++)
+	// 			std::cout << "   " << *i;
+	// 		std::cout << std::endl;
 
-			it = v.begin() + 2;
-			std::cout << "end - it: " << v.end() - it << std::endl;
-			std::cout << &(*it) << std::endl;
-			v.insert(it, 6, 10);
-			for (ft::vector<int>::iterator i = v.begin(); i < v.end(); i++)
-				std::cout << "\t" << *i;
-			std::cout << std::endl;
+	// 		it = v.begin() + 2;
+	// 		v.insert(it, 6, 10);
+	// 		for (ft::vector<int>::iterator i = v.begin(); i < v.end(); i++)
+	// 			std::cout << "   " << *i;
+	// 		std::cout << std::endl;
 
-			// it = v.begin();
-			// ft::vector<int> v1(2, 400);
-			// v.insert(it + 2, v1.begin(), v1.end());
-			// for (ft::vector<int>::iterator i = v.begin(); i < v.end(); i++)
-			// 	std::cout << "\t" << *i;
-			// std::cout << std::endl;
+	// 		it = v.begin();
+	// 		ft::vector<int> v1(2, 400);
+	// 		v.insert(it + 2, v1.begin(), v1.end());
+	// 		for (ft::vector<int>::iterator i = v.begin(); i < v.end(); i++)
+	// 			std::cout << "   " << *i;
+	// 		std::cout << std::endl;
 
-			// int myarray[] = {501, 502, 503};
-			// v.insert(v.begin(), myarray, myarray + 3);
-			// for (ft::vector<int>::iterator i = v.begin(); i < v.end(); i++)
-			// 	std::cout << "\t" << *i;
-			// std::cout << std::endl;
-		}
-		catch (const std::exception &e)
-		{
-			std::cerr << e.what() << '\n';
-		}
-	}
+	// 		int myarray[] = {501, 502, 503};
+	// 		v.insert(v.begin(), myarray, myarray + 3);
+	// 		for (ft::vector<int>::iterator i = v.begin(); i < v.end(); i++)
+	// 			std::cout << "   " << *i;
+	// 		std::cout << std::endl;
+	// 	}
+	// 	catch (const std::exception &e)
+	// 	{
+	// 		std::cerr << e.what() << '\n';
+	// 	}
+	// }
 
 	// std::cout << std::endl
 	// 					<< "\033[36m"
@@ -887,27 +885,27 @@ int main()
 	// 		for (int i = 1; i <= 10; i++)
 	// 			v.push_back(i);
 	// 		for (std::vector<int>::iterator i = v.begin(); i < v.end(); i++)
-	// 			std::cout << "\t" << *i;
+	// 			std::cout << "   " << *i;
 	// 		std::cout << std::endl;
 
 	// 		v.erase(v.begin() + 5);
 	// 		for (std::vector<int>::iterator i = v.begin(); i < v.end(); i++)
-	// 			std::cout << "\t" << *i;
+	// 			std::cout << "   " << *i;
 	// 		std::cout << std::endl;
 
 	// 		v.erase(v.begin(), v.begin() + 2);
 	// 		for (std::vector<int>::iterator i = v.begin(); i < v.end(); i++)
-	// 			std::cout << "\t" << *i;
+	// 			std::cout << "   " << *i;
 	// 		std::cout << std::endl;
 
-	// 		std::cout << "\t" << *(v.end()) << std::endl;
+	// 		std::cout << "   " << *(v.end()) << std::endl;
 
 	// 		v.erase(v.begin() + 2, v.begin() + 5);
 	// 		for (std::vector<int>::iterator i = v.begin(); i < v.end(); i++)
-	// 			std::cout << "\t" << *i;
+	// 			std::cout << "   " << *i;
 	// 		std::cout << std::endl;
 
-	// 		std::cout << "\t" << *(v.end()) << std::endl;
+	// 		std::cout << "   " << *(v.end()) << std::endl;
 	// 	}
 	// 	catch (const std::exception &e)
 	// 	{
@@ -923,27 +921,27 @@ int main()
 	// 		for (int i = 1; i <= 10; i++)
 	// 			v.push_back(i);
 	// 		for (ft::vector<int>::iterator i = v.begin(); i < v.end(); i++)
-	// 			std::cout << "\t" << *i;
+	// 			std::cout << "   " << *i;
 	// 		std::cout << std::endl;
 
 	// 		v.erase(v.begin() + 5);
 	// 		for (ft::vector<int>::iterator i = v.begin(); i < v.end(); i++)
-	// 			std::cout << "\t" << *i;
+	// 			std::cout << "   " << *i;
 	// 		std::cout << std::endl;
 
 	// 		v.erase(v.begin(), v.begin() + 2);
 	// 		for (ft::vector<int>::iterator i = v.begin(); i < v.end(); i++)
-	// 			std::cout << "\t" << *i;
+	// 			std::cout << "   " << *i;
 	// 		std::cout << std::endl;
 
-	// 		std::cout << "\t" << *(v.end()) << std::endl;
+	// 		std::cout << "   " << *(v.end()) << std::endl;
 
 	// 		v.erase(v.begin() + 2, v.begin() + 5);
 	// 		for (ft::vector<int>::iterator i = v.begin(); i < v.end(); i++)
-	// 			std::cout << "\t" << *i;
+	// 			std::cout << "   " << *i;
 	// 		std::cout << std::endl;
 
-	// 		std::cout << "\t" << *(v.end()) << std::endl;
+	// 		std::cout << "   " << *(v.end()) << std::endl;
 	// 	}
 	// 	catch (const std::exception &e)
 	// 	{
@@ -966,10 +964,10 @@ int main()
 
 	// 		std::cout << "foo size = " << foo.size() << '\n';
 	// 		std::cout << "foo capacity = " << foo.capacity() << '\n';
-	// 		std::cout << "foo addr  = " << &(*foo.begin()) << '\n';
+	// 		// std::cout << "foo addr  = " << &(*foo.begin()) << '\n';
 	// 		std::cout << "bar size = " << bar.size() << '\n';
 	// 		std::cout << "bar capacity = " << bar.capacity() << '\n';
-	// 		std::cout << "bar addr  = " << &(*bar.begin()) << '\n';
+	// 		// std::cout << "bar addr  = " << &(*bar.begin()) << '\n';
 	// 		foo.swap(bar);
 
 	// 		std::cout << "foo contains:";
@@ -978,7 +976,7 @@ int main()
 	// 		std::cout << '\n';
 	// 		std::cout << "foo size = " << foo.size() << '\n';
 	// 		std::cout << "foo capacity = " << foo.capacity() << '\n';
-	// 		std::cout << "foo addr  = " << &(*foo.begin()) << '\n';
+	// 		// std::cout << "foo addr  = " << &(*foo.begin()) << '\n';
 
 	// 		std::cout << "bar contains:";
 	// 		for (unsigned i = 0; i < bar.size(); i++)
@@ -986,7 +984,7 @@ int main()
 	// 		std::cout << '\n';
 	// 		std::cout << "bar size = " << bar.size() << '\n';
 	// 		std::cout << "bar capacity = " << bar.capacity() << '\n';
-	// 		std::cout << "bar addr  = " << &(*bar.begin()) << '\n';
+	// 		// std::cout << "bar addr  = " << &(*bar.begin()) << '\n';
 	// 	}
 	// 	catch (const std::exception &e)
 	// 	{
@@ -1002,10 +1000,10 @@ int main()
 
 	// 		std::cout << "foo size = " << foo.size() << '\n';
 	// 		std::cout << "foo capacity = " << foo.capacity() << '\n';
-	// 		std::cout << "foo addr  = " << &(*foo.begin()) << '\n';
+	// 		// std::cout << "foo addr  = " << &(*foo.begin()) << '\n';
 	// 		std::cout << "bar size = " << bar.size() << '\n';
 	// 		std::cout << "bar capacity = " << bar.capacity() << '\n';
-	// 		std::cout << "bar addr  = " << &(*bar.begin()) << '\n';
+	// 		// std::cout << "bar addr  = " << &(*bar.begin()) << '\n';
 	// 		foo.swap(bar);
 
 	// 		std::cout << "foo contains:";
@@ -1014,7 +1012,7 @@ int main()
 	// 		std::cout << '\n';
 	// 		std::cout << "foo size = " << foo.size() << '\n';
 	// 		std::cout << "foo capacity = " << foo.capacity() << '\n';
-	// 		std::cout << "foo addr  = " << &(*foo.begin()) << '\n';
+	// 		// std::cout << "foo addr  = " << &(*foo.begin()) << '\n';
 
 	// 		std::cout << "bar contains:";
 	// 		for (unsigned i = 0; i < bar.size(); i++)
@@ -1022,7 +1020,7 @@ int main()
 	// 		std::cout << '\n';
 	// 		std::cout << "bar size = " << bar.size() << '\n';
 	// 		std::cout << "bar capacity = " << bar.capacity() << '\n';
-	// 		std::cout << "bar addr  = " << &(*bar.begin()) << '\n';
+	// 		// std::cout << "bar addr  = " << &(*bar.begin()) << '\n';
 	// 	}
 	// 	catch (const std::exception &e)
 	// 	{
@@ -1107,124 +1105,124 @@ int main()
 	// 	}
 	// }
 
-	// std::cout << std::endl
-	// 					<< "\033[36m"
-	// 					<< "************************************ test 16 < non-member functions > ************************************ "
-	// 					<< "\033[0m" << std::endl;
-	// {
-	// 	std::cout << "\033[32m"
-	// 						<< "----------------------- ORIGINAL -----------------------"
-	// 						<< "\033[0m" << std::endl;
-	// 	try
-	// 	{
-	// 		std::vector<int> foo(3, 100);
-	// 		std::vector<int> bar(2, 200);
+	std::cout << std::endl
+						<< "\033[36m"
+						<< "************************************ test 16 < non-member functions > ************************************ "
+						<< "\033[0m" << std::endl;
+	{
+		std::cout << "\033[32m"
+							<< "----------------------- ORIGINAL -----------------------"
+							<< "\033[0m" << std::endl;
+		try
+		{
+			std::vector<int> foo(3, 100);
+			std::vector<int> bar(2, 200);
 
-	// 		if (foo == bar)
-	// 			std::cout << "foo and bar are equal\n";
-	// 		if (foo != bar)
-	// 			std::cout << "foo and bar are not equal\n";
-	// 		if (foo < bar)
-	// 			std::cout << "foo is less than bar\n";
-	// 		if (foo > bar)
-	// 			std::cout << "foo is greater than bar\n";
-	// 		if (foo <= bar)
-	// 			std::cout << "foo is less than or equal to bar\n";
-	// 		if (foo >= bar)
-	// 			std::cout << "foo is greater than or equal to bar\n";
+			if (foo == bar)
+				std::cout << "foo and bar are equal\n";
+			if (foo != bar)
+				std::cout << "foo and bar are not equal\n";
+			if (foo < bar)
+				std::cout << "foo is less than bar\n";
+			if (foo > bar)
+				std::cout << "foo is greater than bar\n";
+			if (foo <= bar)
+				std::cout << "foo is less than or equal to bar\n";
+			if (foo >= bar)
+				std::cout << "foo is greater than or equal to bar\n";
 
-	// 		foo.swap(bar);
-	// 		if (foo == bar)
-	// 			std::cout << "foo and bar are equal\n";
-	// 		if (foo != bar)
-	// 			std::cout << "foo and bar are not equal\n";
-	// 		if (foo < bar)
-	// 			std::cout << "foo is less than bar\n";
-	// 		if (foo > bar)
-	// 			std::cout << "foo is greater than bar\n";
-	// 		if (foo <= bar)
-	// 			std::cout << "foo is less than or equal to bar\n";
-	// 		if (foo >= bar)
-	// 			std::cout << "foo is greater than or equal to bar\n";
+			foo.swap(bar);
+			if (foo == bar)
+				std::cout << "foo and bar are equal\n";
+			if (foo != bar)
+				std::cout << "foo and bar are not equal\n";
+			if (foo < bar)
+				std::cout << "foo is less than bar\n";
+			if (foo > bar)
+				std::cout << "foo is greater than bar\n";
+			if (foo <= bar)
+				std::cout << "foo is less than or equal to bar\n";
+			if (foo >= bar)
+				std::cout << "foo is greater than or equal to bar\n";
 
-	// 		std::cout << "foo: ";
-	// 		for (unsigned i = 0; i < foo.size(); i++)
-	// 			std::cout << ' ' << foo[i];
-	// 		std::cout << std::endl;
-	// 		std::cout << "bar: ";
-	// 		for (unsigned i = 0; i < bar.size(); i++)
-	// 			std::cout << ' ' << bar[i];
-	// 		std::cout << std::endl;
-	// 		std::swap(foo, bar);
-	// 		std::cout << "foo: ";
-	// 		for (unsigned i = 0; i < foo.size(); i++)
-	// 			std::cout << ' ' << foo[i];
-	// 		std::cout << std::endl;
-	// 		std::cout << "bar: ";
-	// 		for (unsigned i = 0; i < bar.size(); i++)
-	// 			std::cout << ' ' << bar[i];
-	// 		std::cout << std::endl;
-	// 	}
-	// 	catch (const std::exception &e)
-	// 	{
-	// 		std::cerr << e.what() << '\n';
-	// 	}
-	// 	std::cout << "\033[33m"
-	// 						<< "----------------------- RECREATED -----------------------"
-	// 						<< "\033[0m" << std::endl;
-	// 	try
-	// 	{
-	// 		ft::vector<int> foo(3, 100);
-	// 		ft::vector<int> bar(2, 200);
+			std::cout << "foo: ";
+			for (unsigned i = 0; i < foo.size(); i++)
+				std::cout << ' ' << foo[i];
+			std::cout << std::endl;
+			std::cout << "bar: ";
+			for (unsigned i = 0; i < bar.size(); i++)
+				std::cout << ' ' << bar[i];
+			std::cout << std::endl;
+			std::swap(foo, bar);
+			std::cout << "foo: ";
+			for (unsigned i = 0; i < foo.size(); i++)
+				std::cout << ' ' << foo[i];
+			std::cout << std::endl;
+			std::cout << "bar: ";
+			for (unsigned i = 0; i < bar.size(); i++)
+				std::cout << ' ' << bar[i];
+			std::cout << std::endl;
+		}
+		catch (const std::exception &e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+		std::cout << "\033[33m"
+							<< "----------------------- RECREATED -----------------------"
+							<< "\033[0m" << std::endl;
+		try
+		{
+			ft::vector<int> foo(3, 100);
+			ft::vector<int> bar(2, 200);
 
-	// 		if (foo == bar)
-	// 			std::cout << "foo and bar are equal\n";
-	// 		if (foo != bar)
-	// 			std::cout << "foo and bar are not equal\n";
-	// 		if (foo < bar)
-	// 			std::cout << "foo is less than bar\n";
-	// 		if (foo > bar)
-	// 			std::cout << "foo is greater than bar\n";
-	// 		if (foo <= bar)
-	// 			std::cout << "foo is less than or equal to bar\n";
-	// 		if (foo >= bar)
-	// 			std::cout << "foo is greater than or equal to bar\n";
+			if (foo == bar)
+				std::cout << "foo and bar are equal\n";
+			if (foo != bar)
+				std::cout << "foo and bar are not equal\n";
+			if (foo < bar)
+				std::cout << "foo is less than bar\n";
+			if (foo > bar)
+				std::cout << "foo is greater than bar\n";
+			if (foo <= bar)
+				std::cout << "foo is less than or equal to bar\n";
+			if (foo >= bar)
+				std::cout << "foo is greater than or equal to bar\n";
 
-	// 		foo.swap(bar);
-	// 		if (foo == bar)
-	// 			std::cout << "foo and bar are equal\n";
-	// 		if (foo != bar)
-	// 			std::cout << "foo and bar are not equal\n";
-	// 		if (foo < bar)
-	// 			std::cout << "foo is less than bar\n";
-	// 		if (foo > bar)
-	// 			std::cout << "foo is greater than bar\n";
-	// 		if (foo <= bar)
-	// 			std::cout << "foo is less than or equal to bar\n";
-	// 		if (foo >= bar)
-	// 			std::cout << "foo is greater than or equal to bar\n";
+			foo.swap(bar);
+			if (foo == bar)
+				std::cout << "foo and bar are equal\n";
+			if (foo != bar)
+				std::cout << "foo and bar are not equal\n";
+			if (foo < bar)
+				std::cout << "foo is less than bar\n";
+			if (foo > bar)
+				std::cout << "foo is greater than bar\n";
+			if (foo <= bar)
+				std::cout << "foo is less than or equal to bar\n";
+			if (foo >= bar)
+				std::cout << "foo is greater than or equal to bar\n";
 
-	// 		std::cout << "foo: ";
-	// 		for (unsigned i = 0; i < foo.size(); i++)
-	// 			std::cout << ' ' << foo[i];
-	// 		std::cout << std::endl;
-	// 		std::cout << "bar: ";
-	// 		for (unsigned i = 0; i < bar.size(); i++)
-	// 			std::cout << ' ' << bar[i];
-	// 		std::cout << std::endl;
-	// 		ft::swap(foo, bar);
-	// 		std::cout << "foo: ";
-	// 		for (unsigned i = 0; i < foo.size(); i++)
-	// 			std::cout << ' ' << foo[i];
-	// 		std::cout << std::endl;
-	// 		std::cout << "bar: ";
-	// 		for (unsigned i = 0; i < bar.size(); i++)
-	// 			std::cout << ' ' << bar[i];
-	// 		std::cout << std::endl;
-	// 	}
-	// 	catch (const std::exception &e)
-	// 	{
-	// 		std::cerr << e.what() << '\n';
-	// 	}
-	// }
+			std::cout << "foo: ";
+			for (unsigned i = 0; i < foo.size(); i++)
+				std::cout << ' ' << foo[i];
+			std::cout << std::endl;
+			std::cout << "bar: ";
+			for (unsigned i = 0; i < bar.size(); i++)
+				std::cout << ' ' << bar[i];
+			std::cout << std::endl;
+			ft::swap(foo, bar);
+			std::cout << "foo: ";
+			for (unsigned i = 0; i < foo.size(); i++)
+				std::cout << ' ' << foo[i];
+			std::cout << std::endl;
+			std::cout << "bar: ";
+			for (unsigned i = 0; i < bar.size(); i++)
+				std::cout << ' ' << bar[i];
+			std::cout << std::endl;
+		}
+		catch (const std::exception &e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+	}
 }
