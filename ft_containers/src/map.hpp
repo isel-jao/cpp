@@ -2,6 +2,7 @@
 #define MAP_HPP
 
 #include "avl.hpp"
+#include "vector.hpp"
 #include "utils.hpp"
 
 namespace ft
@@ -11,7 +12,7 @@ namespace ft
 			class Key,
 			class T,
 			class Compare = std::less<Key>,
-			class Allocator = std::allocator<ft::pair<Key, T> > >
+			class Allocator = std::allocator<ft::pair<const Key, T> > >
 	class map
 	{
 
@@ -43,14 +44,7 @@ namespace ft
 		typedef typename AVL<ft::pair<key_type, mapped_type>, value_compare>::reverse_iterator reverse_iterator;
 		typedef typename AVL<ft::pair<key_type, mapped_type>, value_compare>::const_reverse_iterator const_reverse_iterator;
 
-		explicit map() : _tree()
-		{
-			std::cout << "waza" << std::endl;
-		}
-
-		explicit map(const Compare &comp, const Allocator &alloc = Allocator()) : _tree(value_compare(comp), alloc), _comp(comp)
-		{
-		}
+		explicit map(const key_compare &comp = key_compare(), const allocator_type &alloc = allocator_type()) : _tree(value_compare(comp), alloc), _comp(comp) {}
 
 		template <class InputIterator>
 		map(InputIterator first, InputIterator last, const key_compare &comp = key_compare(), const allocator_type &alloc = allocator_type()) : _tree(value_compare(comp), alloc), _comp(comp)
@@ -118,12 +112,11 @@ namespace ft
 
 		void erase(iterator first, iterator last)
 		{
-			iterator tmp = first;
-			while (tmp != last)
-			{
-				_tree.erase(*tmp);
-				tmp++;
-			}
+			value_type tmp[_tree.size()];
+			for (size_t i = 0; first != last; first++, i++)
+				tmp[i] = *first;
+			for (size_t i = 0; i < _tree.size(); i++)
+				_tree.erase(tmp[i]);
 		}
 		iterator find(const key_type &key)
 		{
@@ -197,46 +190,44 @@ namespace ft
 			return value_compare(_comp);
 		}
 
+		friend bool operator==(const map &lhs, const map &rhs)
+		{
+			return (lhs._tree == rhs._tree);
+		}
+
+		friend bool operator!=(const map &lhs, const map &rhs)
+		{
+			return (lhs._tree != rhs._tree);
+		}
+
+		friend bool operator<(const map &lhs, const map &rhs)
+		{
+			return (lhs._tree < rhs._tree);
+		}
+
+		friend bool operator<=(const map &lhs, const map &rhs)
+		{
+			return (lhs._tree <= rhs._tree);
+		}
+
+		friend bool operator>(const map &lhs, const map &rhs)
+		{
+			return (lhs._tree > rhs._tree);
+		}
+
+		friend bool operator>=(const map &lhs, const map &rhs)
+		{
+			return (lhs._tree >= rhs._tree);
+		}
+
 	protected:
 		typedef AVL<ft::pair<Key, T>, value_compare> bst_tree;
 		bst_tree _tree;
 		key_compare _comp;
 	};
-	// template <class Key, class T, class Compare, class Alloc>
-	// bool operator==(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
-	// {
-	// 	return (lhs._tree == rhs._tree);
-	// }
 
-	// template <class Key, class T, class Compare, class Alloc>
-	// bool operator!=(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
-	// {
-	// 	return (lhs._tree != rhs._tree);
-	// }
-
-	// template <class Key, class T, class Compare, class Alloc>
-	// bool operator<(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
-	// {
-	// 	return (lhs._tree < rhs._tree);
-	// }
-
-	// template <class Key, class T, class Compare, class Alloc>
-	// bool operator<=(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
-	// {
-	// 	return (lhs._tree <= rhs._tree);
-	// }
-
-	// template <class Key, class T, class Compare, class Alloc>
-	// bool operator>(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
-	// {
-	// 	return (lhs._tree > rhs._tree);
-	// }
-	// template <class Key, class T, class Compare, class Alloc>
-	// bool operator>=(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
-
-	// {
-	// 	return (lhs._tree >= rhs._tree);
-	// }
+	
+	
 }
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: isel-jao <isel-jao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:59:34 by isel-jao          #+#    #+#             */
-/*   Updated: 2023/01/13 16:52:38 by isel-jao         ###   ########.fr       */
+/*   Updated: 2023/01/14 00:34:09 by isel-jao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 namespace ft
 {
-	template <class T, class Container = std::vector<T> >
+	template <class T, class Container = ft::vector<T> >
 	class stack
 	{
 	public:
@@ -62,41 +62,41 @@ namespace ft
 		container_type _c;
 	};
 
-	template <class T, class Container>
-	bool operator==(const ft::stack<T, Container> &lhs, const ft::stack<T, Container> &rhs)
-	{
-		return (lhs._c == rhs._c);
-	}
+	// template <class T, class Container>
+	// bool operator==(const ft::stack<T, Container> &lhs, const ft::stack<T, Container> &rhs)
+	// {
+	// 	return (lhs._c == rhs._c);
+	// }
 
-	template <class T, class Container>
-	bool operator!=(const ft::stack<T, Container> &lhs, const ft::stack<T, Container> &rhs)
-	{
-		return (lhs._c != rhs._c);
-	}
+	// template <class T, class Container>
+	// bool operator!=(const ft::stack<T, Container> &lhs, const ft::stack<T, Container> &rhs)
+	// {
+	// 	return (lhs._c != rhs._c);
+	// }
 
-	template <class T, class Container>
-	bool operator<(const ft::stack<T, Container> &lhs, const ft::stack<T, Container> &rhs)
-	{
-		return (lhs._c < rhs._c);
-	}
+	// template <class T, class Container>
+	// bool operator<(const ft::stack<T, Container> &lhs, const ft::stack<T, Container> &rhs)
+	// {
+	// 	return (lhs._c < rhs._c);
+	// }
 
-	template <class T, class Container>
-	bool operator<=(const ft::stack<T, Container> &lhs, const ft::stack<T, Container> &rhs)
-	{
-		return (lhs._c <= rhs._c);
-	}
+	// template <class T, class Container>
+	// bool operator<=(const ft::stack<T, Container> &lhs, const ft::stack<T, Container> &rhs)
+	// {
+	// 	return (lhs._c <= rhs._c);
+	// }
 
-	template <class T, class Container>
-	bool operator>(const ft::stack<T, Container> &lhs, const ft::stack<T, Container> &rhs)
-	{
-		return (lhs._c > rhs._c);
-	}
+	// template <class T, class Container>
+	// bool operator>(const ft::stack<T, Container> &lhs, const ft::stack<T, Container> &rhs)
+	// {
+	// 	return (lhs._c > rhs._c);
+	// }
 
-	template <class T, class Container>
-	bool operator>=(const ft::stack<T, Container> &lhs, const ft::stack<T, Container> &rhs)
-	{
-		return (lhs._c >= rhs._c);
-	}
+	// template <class T, class Container>
+	// bool operator>=(const ft::stack<T, Container> &lhs, const ft::stack<T, Container> &rhs)
+	// {
+	// 	return (lhs._c >= rhs._c);
+	// }
 }
 
 #endif

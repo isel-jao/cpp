@@ -18,7 +18,7 @@ struct Node
 	unsigned long _height;
 
 	Node(T data = T(), Node<T> *parent = NULL, Node<T> *left = NULL, Node<T> *right = NULL)
-			: _data(data), _left(left), _right(right), _parent(parent), _height(0) {}
+			: _data(data), _parent(parent), _left(left), _right(right), _height(0) {}
 
 	~Node() {}
 };
@@ -288,6 +288,56 @@ public:
 		this->_size = tmp2;
 	}
 
+	friend bool operator==(const AVL &lhs, const AVL &rhs)
+	{
+		// (void)lhs;
+		// (void)rhs;
+		// return false;
+		if (lhs.size() != rhs.size())
+			return false;
+		return equal(lhs.begin(), lhs.end(), rhs.begin());
+	}
+
+	friend bool operator!=(const AVL &lhs, const AVL &rhs)
+	{
+		(void)lhs;
+		(void)rhs;
+		return false;
+		// return !(lhs == rhs);
+	}
+
+	friend bool operator<(const AVL &lhs, const AVL &rhs)
+	{
+
+		(void)lhs;
+		(void)rhs;
+		return false;
+		// return lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end());
+	}
+
+	friend bool operator<=(const AVL &lhs, const AVL &rhs)
+	{
+		(void)lhs;
+		(void)rhs;
+		return false;
+		// return !(rhs < lhs);
+	}
+
+	friend bool operator>(const AVL &lhs, const AVL &rhs)
+	{
+		(void)lhs;
+		(void)rhs;
+		return false;
+		// return rhs < lhs;
+	}
+
+	friend bool operator>=(const AVL &lhs, const AVL &rhs)
+	{
+		(void)lhs;
+		(void)rhs;
+		return false;
+		// return !(lhs < rhs);
+	}
 private:
 	void
 	clear(pointer node)
@@ -306,7 +356,8 @@ private:
 		if (node)
 		{
 			pointer n = _alloc.allocate(1);
-			_alloc.construct(n, node->_data, p);
+			_alloc.construct(n, node->_data);
+			n->_parent = p;
 			n->_left = clone(node->_left, n);
 			n->_right = clone(node->_right, n);
 			n->_height = node->_height;
@@ -437,11 +488,11 @@ private:
 
 	pointer insert(pointer root, const value_type &data, pointer parent, bool &inserted, iterator &it)
 	{
-
 		if (root == NULL)
 		{
 			root = _alloc.allocate(1);
-			_alloc.construct(root, data, parent);
+			_alloc.construct(root, data);
+			root->_parent = parent;
 			_size++;
 			inserted = true;
 			it = iterator(root);
