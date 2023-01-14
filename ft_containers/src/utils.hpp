@@ -6,7 +6,7 @@
 /*   By: isel-jao <isel-jao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:58:53 by isel-jao          #+#    #+#             */
-/*   Updated: 2023/01/14 00:56:30 by isel-jao         ###   ########.fr       */
+/*   Updated: 2023/01/14 09:45:36 by isel-jao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,46 @@ namespace ft
         }
 
         ~pair() {}
+
+        
+        friend bool operator==(const pair &lhs, const pair &rhs)
+        {
+            return (lhs.first == rhs.first && lhs.second == rhs.second);
+        }
+
+        
+        friend bool operator!=(const pair &lhs, const pair &rhs)
+        {
+            return !(lhs == rhs);
+        }
+
+        
+        friend bool operator<(const pair &lhs, const pair &rhs)
+        {
+            return (lhs.first < rhs.first || (!(rhs.first < lhs.first) && lhs.second < rhs.second));
+        }
+
+        
+        friend bool operator<=(const pair &lhs, const pair &rhs)
+        {
+            return !(rhs < lhs);
+        }
+
+        
+        friend bool operator>(const pair &lhs, const pair &rhs)
+        {
+            return (rhs < lhs);
+        }
+
+        
+        friend bool operator>=(const pair &lhs, const pair &rhs)
+        {
+            return !(lhs < rhs);
+        }
     };
 
+
+        
     template <class T1, class T2>
     ft::pair<T1, T2> make_pair(T1 x, T2 y)
     {
@@ -57,41 +95,7 @@ namespace ft
     }
 }
 
-template <class T1, class T2>
-bool operator==(const ft::pair<const T1, const T2> &lhs, const ft::pair<const T1, const T2> &rhs)
-{
-    return (lhs.first == rhs.first && lhs.second == rhs.second);
-}
 
-template <class T1, class T2>
-bool operator!=(const ft::pair<const T1, const T2> &lhs, const ft::pair<const T1, const T2> &rhs)
-{
-    return !(lhs == rhs);
-}
-
-template <class T1, class T2>
-bool operator<(const ft::pair<const T1, const T2> &lhs, const ft::pair<const T1, const T2> &rhs)
-{
-    return (lhs.first < rhs.first || (!(rhs.first < lhs.first) && lhs.second < rhs.second));
-}
-
-template <class T1, class T2>
-bool operator<=(const ft::pair<const T1, const T2> &lhs, const ft::pair<const T1, const T2> &rhs)
-{
-    return !(rhs < lhs);
-}
-
-template <class T1, class T2>
-bool operator>(const ft::pair<const T1, const T2> &lhs, const ft::pair<const T1, const T2> &rhs)
-{
-    return (rhs < lhs);
-}
-
-template <class T1, class T2>
-bool operator>=(const ft::pair<const T1, const T2> &lhs, const ft::pair<const T1, const T2> &rhs)
-{
-    return !(lhs < rhs);
-}
 
 template <typename T1, typename T2>
 std::ostream &operator<<(std::ostream &os, const ft::pair<T1, T2> &p)

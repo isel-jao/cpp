@@ -290,9 +290,6 @@ public:
 
 	friend bool operator==(const AVL &lhs, const AVL &rhs)
 	{
-		// (void)lhs;
-		// (void)rhs;
-		// return false;
 		if (lhs.size() != rhs.size())
 			return false;
 		return equal(lhs.begin(), lhs.end(), rhs.begin());
@@ -300,43 +297,28 @@ public:
 
 	friend bool operator!=(const AVL &lhs, const AVL &rhs)
 	{
-		(void)lhs;
-		(void)rhs;
-		return false;
-		// return !(lhs == rhs);
+		return !(lhs == rhs);
 	}
 
 	friend bool operator<(const AVL &lhs, const AVL &rhs)
 	{
 
-		(void)lhs;
-		(void)rhs;
-		return false;
-		// return lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end());
+		return lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end());
 	}
 
 	friend bool operator<=(const AVL &lhs, const AVL &rhs)
 	{
-		(void)lhs;
-		(void)rhs;
-		return false;
-		// return !(rhs < lhs);
+		return !(rhs < lhs);
 	}
 
 	friend bool operator>(const AVL &lhs, const AVL &rhs)
 	{
-		(void)lhs;
-		(void)rhs;
-		return false;
-		// return rhs < lhs;
+		return rhs < lhs;
 	}
 
 	friend bool operator>=(const AVL &lhs, const AVL &rhs)
 	{
-		(void)lhs;
-		(void)rhs;
-		return false;
-		// return !(lhs < rhs);
+		return !(lhs < rhs);
 	}
 private:
 	void

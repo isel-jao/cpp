@@ -6,7 +6,7 @@
 /*   By: isel-jao <isel-jao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:59:25 by isel-jao          #+#    #+#             */
-/*   Updated: 2023/01/13 16:51:45 by isel-jao         ###   ########.fr       */
+/*   Updated: 2023/01/14 09:41:21 by isel-jao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,15 +97,14 @@ namespace ft
 
 		reference operator[](difference_type n) const { return (_ptr[n]); }
 
+	friend bool operator==(const vector_random_access_iterator &lhs, const vector_random_access_iterator &rhs)
+	{
+		return (lhs.base() == rhs.base());
+	}
 	private:
 		pointer _ptr;
 	};
 
-	template <class Iterator>
-	bool operator==(const vector_random_access_iterator<Iterator> &lhs, const vector_random_access_iterator<Iterator> &rhs)
-	{
-		return (lhs.base() == rhs.base());
-	}
 
 	template <class Iterator>
 	bool operator!=(const vector_random_access_iterator<Iterator> &lhs, const vector_random_access_iterator<Iterator> &rhs)
@@ -344,21 +343,19 @@ namespace ft
 			return (tmp);
 		}
 
-	private:
-		pointer _ptr;
-	};
-
-	template <typename D, typename T>
-	bool operator==(const BST_iterator<D, T> &lhs, const BST_iterator<D, T> &rhs)
+	friend bool operator==(const BST_iterator &lhs, const BST_iterator &rhs)
 	{
 		return (lhs._ptr == rhs._ptr);
 	}
 
-	template <typename D, typename T>
-	bool operator!=(const BST_iterator<D, T> &lhs, const BST_iterator<D, T> &rhs)
+	friend bool operator!=(const BST_iterator &lhs, const BST_iterator &rhs)
 	{
 		return (lhs._ptr != rhs._ptr);
 	}
+	private:
+		pointer _ptr;
+	};
+
 }
 
 namespace ft
@@ -462,21 +459,20 @@ namespace ft
 			return (tmp);
 		}
 
+	
+	friend bool operator==(const BST_reverse_iterator &lhs, const BST_reverse_iterator &rhs)
+	{
+		return (lhs._ptr == rhs._ptr);
+	}
+	friend bool operator!=(const BST_reverse_iterator &lhs, const BST_reverse_iterator &rhs)
+	{
+		return (lhs._ptr != rhs._ptr);
+	}
 	private:
 		pointer _ptr;
 	};
 
-	template <typename D, typename T>
-	bool operator==(const BST_reverse_iterator<D, T> &lhs, const BST_reverse_iterator<D, T> &rhs)
-	{
-		return (lhs._ptr == rhs._ptr);
-	}
 
-	template <typename D, typename T>
-	bool operator!=(const BST_reverse_iterator<D, T> &lhs, const BST_reverse_iterator<D, T> &rhs)
-	{
-		return (lhs._ptr != rhs._ptr);
-	}
 }
 
 namespace ft
